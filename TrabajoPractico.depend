@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1716160771 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Patente.h"
+	"AutoArchivo.h"
+
+1716160826 c:\users\schja\documents\utn\programacioni\trabajopractico\patente.h
+
+1716162636 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.h
+	"Patente.h"
+
+1716152855 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"AutoArchivo.h"
+	"Patente.h"
+	<ctype.h>
+
+1716160763 source:c:\users\schja\documents\utn\programacioni\trabajopractico\patente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Patente.h"
+
