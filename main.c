@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Patente.h"
+
+// Librerias Propias
 #include "AutoArchivo.h"
+#include "Auto.h"
+
 
 int main()
 {

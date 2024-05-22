@@ -10,13 +10,13 @@
 1716162636 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.h
 	"Patente.h"
 
-1716152855 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.c
+1716378757 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<ctype.h>
 	"AutoArchivo.h"
 	"Patente.h"
-	<ctype.h>
 
 1716160763 source:c:\users\schja\documents\utn\programacioni\trabajopractico\patente.c
 	<stdio.h>

@@ -1,8 +1,7 @@
-
-#include "Patente.h"
-
 #ifndef AUTOARCHIVO_H_INCLUDED
 #define AUTOARCHIVO_H_INCLUDED
+
+#include "Patente.h"
 
 /** Interface de la Libreria relacionada con la estructura AutoArchivo **/
 
@@ -29,6 +28,7 @@ AutoArchivo cargarAutoArchivo();
     Funcion que sirve para mostrar un AutoArchivo
     Args.: AutoArchivo
     Return: void
+
 **/
 
 void mostrarAuto(AutoArchivo);
