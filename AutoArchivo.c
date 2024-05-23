@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
 #include "AutoArchivo.h"
 #include "Patente.h"
 
@@ -48,7 +49,7 @@ return coche;
 
  **/
 
-void mostrarAuto(AutoArchivo coche){
+void mostrarAutoArchivo(AutoArchivo coche){
 
 printf("-----------------------------------------\n");
 printf("Patente: %s-%s\n", coche.patente.letras, coche.patente.numeros);

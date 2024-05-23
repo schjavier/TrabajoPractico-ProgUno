@@ -8,9 +8,13 @@
 
 int main()
 {
-    AutoArchivo coche;
-    coche = cargarAutoArchivo();
-    mostrarAuto(coche);
+//    AutoArchivo coche;
+//    coche = cargarAutoArchivo();
+//    mostrarAutoArchivo(coche);
+
+    Auto coche;
+    coche = cargarAuto();
+    mostrarAuto(&coche);
 
 
         return 0;

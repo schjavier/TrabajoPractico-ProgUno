@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Auto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Auto.h" />
 		<Unit filename="AutoArchivo.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -41,6 +45,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Patente.h" />
+		<Unit filename="Persona.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Persona.h" />
 		<Unit filename="README.md" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />

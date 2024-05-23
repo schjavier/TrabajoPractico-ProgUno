@@ -1,14 +1,15 @@
-#include "persona.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
+#include "persona.h"
+
 #define archivopersona "personas.bin"
 
 /// FUNCIONALIDAD ///
 
-// CARGA DE ESTUDIANTES (EN MEMORIA)
+// CARGA DE PERSONAS (EN MEMORIA)
 void agregarPersona()
 {
     Persona persona;
@@ -164,7 +165,7 @@ void guardarPersonaAFile(Persona persona)
 
 
 
-// MUESTRA DE ALUMNOS
+// MUESTRA DE PERSONAS
 
 void mostrarPersonasMenu()
 {

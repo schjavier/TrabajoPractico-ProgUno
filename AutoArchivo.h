@@ -31,7 +31,7 @@ AutoArchivo cargarAutoArchivo();
 
 **/
 
-void mostrarAuto(AutoArchivo);
+void mostrarAutoArchivo(AutoArchivo);
 
 
 #endif // AUTOARCHIVO_H_INCLUDED

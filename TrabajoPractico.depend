@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1716160771 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
+1716460438 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
 	<stdio.h>
 	<stdlib.h>
-	"Patente.h"
 	"AutoArchivo.h"
+	"Auto.h"
 
 1716160826 c:\users\schja\documents\utn\programacioni\trabajopractico\patente.h
 
-1716162636 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.h
+1716457227 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.h
 	"Patente.h"
 
-1716378757 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.c
+1716457918 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -24,4 +24,22 @@
 	<string.h>
 	<ctype.h>
 	"Patente.h"
+
+1716458686 source:c:\users\schja\documents\utn\programacioni\trabajopractico\persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"persona.h"
+
+1716380604 c:\users\schja\documents\utn\programacioni\trabajopractico\persona.h
+
+1716458729 c:\users\schja\documents\utn\programacioni\trabajopractico\auto.h
+	"Persona.h"
+	"Patente.h"
+
+1716460644 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto.c
+	<stdio.h>
+	<stdlib.h>
+	"Auto.h"
 
