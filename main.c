@@ -16,7 +16,6 @@ int main()
     coche = cargarAuto();
     mostrarAuto(&coche);
 
-
         return 0;
 }
 
