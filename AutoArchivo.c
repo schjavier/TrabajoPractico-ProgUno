@@ -11,10 +11,11 @@
 **/
 
 
-/** Función que carga una estructura tipo AutoArchivo.
+/**
+    Función que carga una estructura tipo AutoArchivo.
     Args: none
     Return: AutoArchivo
- **/
+**/
 
 AutoArchivo cargarAutoArchivo(){
 
@@ -43,7 +44,7 @@ return coche;
 }
 
 /**
-    Función que muestra todos los campos de una estructura tipo AutoArchivo.
+    Función que muestra por pantalla todos los campos de una estructura tipo AutoArchivo.
     Args: AutoArchivo
     Return: none
 

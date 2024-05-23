@@ -27,19 +27,15 @@ typedef struct {
 
 } Auto;
 
-/** Funciones que cargan cada unos de los campos de la estructura. **/
 void cargarMarca(Auto*);
 void cargarModelo(Auto*);
 void cargarAnio(Auto*);
 void cargarKms(Auto*);
 void cargarPrecioAd(Auto*);
 
-
-
 Auto cargarAuto();
-
-void mostrarAuto();
-void modificarAuto();
+void mostrarAuto(Auto*);
+void modificarAuto(Auto*);
 
 
 

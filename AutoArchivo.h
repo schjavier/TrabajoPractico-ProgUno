@@ -3,8 +3,6 @@
 
 #include "Patente.h"
 
-/** Interface de la Libreria relacionada con la estructura AutoArchivo **/
-
 /**
     Definicion de tipo.
 **/
@@ -18,18 +16,8 @@ typedef struct {
     float precioDeAdquisicion;
 } AutoArchivo;
 
-/** Funcion que carga la estructura AutoArchivo.
-    Args.: no
-    Return: AutoArchivo
- **/
+
 AutoArchivo cargarAutoArchivo();
-
-/**
-    Funcion que sirve para mostrar un AutoArchivo
-    Args.: AutoArchivo
-    Return: void
-
-**/
 
 void mostrarAutoArchivo(AutoArchivo);
 

@@ -4,10 +4,15 @@
 #include "Auto.h"
 
 /**
-
     Implementación de la interface Auto
 
  **/
+
+/**
+    Funcion que carga el campo Marca de la estructura.
+    Args: recive un puntero a Auto
+    Return: none
+**/
 
 void cargarMarca(Auto *coche){
 
@@ -18,6 +23,12 @@ void cargarMarca(Auto *coche){
 
 }
 
+/**
+    Funcion que carga el campo Modelo de la estructura.
+    Args: recive un puntero a Auto
+    Return: none
+**/
+
 void cargarModelo(Auto *coche){
 
     printf("Ingrese el modelo: ");
@@ -25,6 +36,13 @@ void cargarModelo(Auto *coche){
     gets((*coche).modelo);
 
 }
+
+/**
+    Funcion que carga el campo Anio de la estructura.
+    Args: recive un puntero a Auto
+    Return: none
+**/
+
 
 void cargarAnio(Auto *coche){
 
@@ -34,6 +52,13 @@ void cargarAnio(Auto *coche){
 
 }
 
+/**
+    Funcion que carga el campo Kms de la estructura.
+    Args: recive un puntero a Auto
+    Return: none
+**/
+
+
 void cargarKms(Auto *coche){
 
     printf("Ingrese el kilometraje: ");
@@ -42,6 +67,13 @@ void cargarKms(Auto *coche){
 
 }
 
+/**
+    Funcion que carga el campo PrecioDeAdquisicion de la estructura.
+    Args: recive un puntero a Auto
+    Return: none
+**/
+
+
 void cargarPrecioAd(Auto *coche){
 
     printf("Ingrese el precio de adquisici%cn: ", 162);
@@ -49,6 +81,12 @@ void cargarPrecioAd(Auto *coche){
     scanf("%f", &coche->precioDeAdquisicion);
 
 }
+
+/**
+    Funcion que carga todos los campos de la estructura Auto.
+    Args: none
+    Return: devuelve una estrucutra de tipo Auto cargada
+**/
 
 Auto cargarAuto(){
 
@@ -65,6 +103,12 @@ Auto cargarAuto(){
 
 return coche;
 }
+
+/**
+    Funcion que muestra por pantalla, los datos de una estructura tipo Auto
+    Args: recibe un puntero a Auto
+    Return: none
+**/
 
 void mostrarAuto(Auto *coche){
     printf(":::: DETALLES DEL AUTOMOTOR ::::\n");

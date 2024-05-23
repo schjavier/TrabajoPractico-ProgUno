@@ -5,6 +5,12 @@
 
 #include "Patente.h"
 
+/**
+    Funcion que carga una patente.
+    Args: none
+    Return: Devuelve una estructura tipo Patente.
+**/
+
 Patente cargarPatente(){
 
 Patente patente;
@@ -19,6 +25,15 @@ gets(patente.numeros);
 
 return patente;
 }
+
+/**
+    Funcion que realiza el cambio de minusculas a mayusculas de las
+    letras de una patente.
+    Args: Recibe una arreglo de caracteres
+    Return: none
+
+**/
+
 
 void letrasMayus(char letras[]){
 
