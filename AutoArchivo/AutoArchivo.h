@@ -1,7 +1,7 @@
 #ifndef AUTOARCHIVO_H_INCLUDED
 #define AUTOARCHIVO_H_INCLUDED
 
-#include "Patente.h"
+#include "../Patente/Patente.h"
 
 /**
     Definicion de tipo.

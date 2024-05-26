@@ -31,25 +31,27 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Auto.c">
+		<Unit filename="AutoArchivo/AutoArchivo.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Auto.h" />
-		<Unit filename="AutoArchivo.c">
+		<Unit filename="AutoArchivo/AutoArchivo.h" />
+		<Unit filename="Auto/Auto.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="AutoArchivo.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="Patente.c">
+		<Unit filename="Auto/Auto.h" />
+		<Unit filename="Patente/Patente.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Patente.h" />
-		<Unit filename="Persona.c">
+		<Unit filename="Patente/Patente.h" />
+		<Unit filename="Persona/Persona.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Persona.h" />
+		<Unit filename="Persona/Persona.h" />
 		<Unit filename="README.md" />
+		<Unit filename="Usuario/Usuario.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Usuario/Usuario.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

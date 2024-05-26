@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 #include "AutoArchivo.h"
-#include "Patente.h"
+#include "../Patente/Patente.h"
 
 /**
     Implementacion de la interface AutoArchivo
