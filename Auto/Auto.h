@@ -1,8 +1,9 @@
 #ifndef AUTO_H_INCLUDED
 #define AUTO_H_INCLUDED
 
-#include "Persona.h"
-#include "Patente.h"
+#include "../Persona/Persona.h"
+#include "../Patente/Patente.h"
+
 
 /**
     interface de la la estructura auto
