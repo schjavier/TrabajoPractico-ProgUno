@@ -52,6 +52,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Usuario/Usuario.h" />
+		<Unit filename="Usuario/UsuarioValidaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Usuario/UsuarioValidaciones.h" />
+		<Unit filename="Utiles/Utiles.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Utiles/Utiles.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
