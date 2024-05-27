@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1716727407 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
+1716818231 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
 	<stdio.h>
 	<stdlib.h>
 	"AutoArchivo/AutoArchivo.h"
@@ -82,10 +82,31 @@
 1716725427 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.h
 	"../Patente/Patente.h"
 
-1716725081 c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.h
+1716819553 c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.h
 
-1716727372 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.c
+1716821269 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.c
 	<stdio.h>
 	<stdlib.h>
 	"Usuario.h"
+	"UsuarioValidaciones.h"
+	"../Utiles/Utiles.h"
+
+1716821556 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuariovalidaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"../Utiles/Utiles.h"
+	"UsuarioValidaciones.h"
+	"Usuario.h"
+
+1716818113 c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuariovalidaciones.h
+	"Usuario.h"
+
+1716821234 source:c:\users\schja\documents\utn\programacioni\trabajopractico\utiles\utiles.c
+	<stdio.h>
+	<stdlib.h>
+	"Utiles.h"
+
+1716821234 c:\users\schja\documents\utn\programacioni\trabajopractico\utiles\utiles.h
 
