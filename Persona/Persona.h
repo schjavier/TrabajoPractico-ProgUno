@@ -1,7 +1,9 @@
 #ifndef PERSONA_H_INCLUDED
 #define PERSONA_H_INCLUDED
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct {
+typedef struct { // 174 Bytes
 	char dni[9];
 	char nombre[50];
 	char telefono[14];
@@ -10,6 +12,11 @@ typedef struct {
 } Persona;
 
 /// FUNCIONALIDAD ///
+
+// MENU DE CARGA DE PERSONAS
+void menuCargaPersonas();
+
+
 // CARGA DE PERSONAS (MEMORIA)
 void agregarPersona();
 void cargarDNI(Persona*);
@@ -21,14 +28,23 @@ void cargarRol(Persona*);
 
 // GUARDADO A ARCHIVOS
 void guardarPersonaAFile(Persona);
+void guardarCambiosPersona(Persona,int);
+// INICIO DE MODIFICACION DE PERSONAS
+
+void modificarPersona();
+void menuDeModificacionPersona(Persona,int);
+
 
 //
 
 // MUESTRA DE PERSONAS
-void mostrarPersonasMenu(); // LECTURA DE ARCHIVO
+void menuVerPersonas(); // MUESTRA LAS DOS OPCIONES, MOSTRAR UNA O TODAS LAS PERSONAS
 
-void mostrarPersonaFull(); // Muestra todos las personas completamente
-void mostrarPersonaMin(); // Muestra todas las personas minimamente
+void mostrarPersonasMenu(); // Muestra todas las personas
+void mostrarPersonasFull(); // Muestra todos las personas completamente
+void mostrarPersonasMin(); // Muestra todas las personas minimamente
+
+void buscarUnaPersona();
 
 void verPersonaFull(Persona);
 void verPersonaMin(Persona);
@@ -36,19 +52,22 @@ void verPersonaMin(Persona);
 
 // VERIFICACIONES
 int verificarEnteros(char[]);
+int verificarChars(char[]);
 
 int verificarDNI(char[]);
+int verificarNombre(char[]);
+int verificarDir(char[]);
 int verificarRol(char);
+int verificarTel(char[]);
 // FIN VERIFICACIONES
 
 /// AYUDANTES ///
 void pasarAMayus(char*);
-
-
-
 void traducirRolCliente(char);
-
-
+Persona buscarSegunDNI(char[]);
+int devolverNumEntrada(char[]); // Segun DNI
+int verSiDNINoExiste(char[]); // Verificar asi no hay duplicados.
+int archivoExiste(char[]);
 
 
 #endif // PERSONA_H_INCLUDED
