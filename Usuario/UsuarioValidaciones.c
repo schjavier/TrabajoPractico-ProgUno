@@ -44,6 +44,12 @@ int existeUsuario(char *nombreArchivo, char *nombreUsuario){
     return resultado;
 }
 
+/**
+    Funcion que valida la contraseña ingresada por el usuario.
+    Args: un arreglo de char
+    return un int = 1 si es valida.
+                    0 si no lo es.
+**/
 
 int validarContrasenia(char contrasenia[]){
     int valida = 0;
@@ -58,6 +64,17 @@ int validarContrasenia(char contrasenia[]){
 return valida;
 }
 
+/**
+    Funcion que chequea el arreglo de caracteres pasado como parametro sea numerico.
+
+    Args: recive un arreglo de caracteres.
+
+    return: devuelve un int con un valor distinto de cero si es numerico, 0 en caso
+            de que no lo sea.
+
+
+**/
+
 int esPinNumerico(char pin[]){
 
     int numerico;
@@ -71,6 +88,13 @@ int esPinNumerico(char pin[]){
 
     return numerico;
 }
+
+/**
+    Funcion que valida el pin, chequea que sea numerico, y que la longitud del mismo sea la necesaria.
+    Args: recive un arrege de caracteres
+    return: devuelve un int = 1 si es valido.
+                              0 si no lo es.
+**/
 
 int validarPin(char pin[]){
     int valido;
