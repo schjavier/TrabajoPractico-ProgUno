@@ -69,5 +69,10 @@ int devolverNumEntrada(char[]); // Segun DNI
 int verSiDNINoExiste(char[]); // Verificar asi no hay duplicados.
 int archivoExiste(char[]);
 
+/// CARGA EN MEMORIA ///
+void cargarEnArregloPersonasInit();
+void cargarPersonaArreglo(Persona);
+void allocarEspacioParaPersona(Persona**);
+
 
 #endif // PERSONA_H_INCLUDED

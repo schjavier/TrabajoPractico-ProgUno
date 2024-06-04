@@ -6,6 +6,9 @@
 
 #define archivopersona "personas.bin"
 
+Persona*arreglopersona; // Arreglo dinamico de las personas, se puede leer simplemente llamando su nombre, tratenlo como un arreglo.
+int cantidadpersonas = -1; // -1 es la posicion final de las personas, tambien define cuanto calloc'ear para el arreglo ^
+
 /// FUNCIONALIDAD ///
 
 /** \brief Muestra el menu de opciones para que el usuario elija una de los dos opciones
@@ -42,7 +45,7 @@ void menuCargaPersonas()
 }
 
 
-// CARGA DE ESTUDIANTES (EN MEMORIA)
+// CARGA DE PERSONAS (EN MEMORIA)
 /** \brief Interfaz que se usa para cargar datos a una variable persona.
  *
  * \return void Se debe completar todo antes de salir.
@@ -65,7 +68,9 @@ void agregarPersona()
     cargarRol(&persona);
     fflush(stdin);
 
-    verPersonaFull(persona);
+
+    cargarPersonaArreglo(persona);
+    fflush(stdin);
     guardarPersonaAFile(persona);
 }
 
@@ -408,7 +413,7 @@ void modificarPersona()
     {
         puts("No existe el archivo de persona. Crear una persona.");
         system("pause");
-        menuCargaPersonas();
+        return;
     }
 
     system("cls");
@@ -474,6 +479,7 @@ void menuDeModificacionPersona(Persona personanueva,int entrada)
     {
         Persona personavieja = personanueva; // para luego buscar la entrada que tienen estos datos
         system("cls");
+        printf("Entrada N%i\n",entrada);
         puts("Cliente:");
         verPersonaFull(personanueva);
 
@@ -531,6 +537,7 @@ void menuDeModificacionPersona(Persona personanueva,int entrada)
 
             if(entrada != -1)
             {
+                arreglopersona[entrada] = personanueva;
                 guardarCambiosPersona(personanueva,entrada);
             }
             else
@@ -627,16 +634,9 @@ void mostrarPersonasMenu()
  */
 void mostrarPersonasFull()
 {
-    FILE * arch = fopen(archivopersona,"rb");
-
-    if(arch != NULL)
+    for(int i = 0;i<=cantidadpersonas;i++)
     {
-        Persona persona;
-        while(fread(&persona,sizeof(Persona),1,arch)>0)
-        {
-            verPersonaFull(persona);
-        }
-        fclose(arch);
+        verPersonaFull(arreglopersona[i]);
     }
 }
 
@@ -647,16 +647,9 @@ void mostrarPersonasFull()
  */
 void mostrarPersonasMin()
 {
-    FILE * arch = fopen(archivopersona,"rb");
-
-    if(arch != NULL)
+    for(int i = 0;i<=cantidadpersonas;i++)
     {
-        Persona persona;
-        while(fread(&persona,sizeof(Persona),1,arch)>0)
-        {
-            verPersonaMin(persona);
-        }
-        fclose(arch);
+        verPersonaMin(arreglopersona[i]);
     }
 }
 
@@ -678,7 +671,6 @@ void buscarUnaPersona()
         pasarAMayus(&dnibusqueda);
 
         fflush(stdin);
-
 
         if(strcmp(dnibusqueda,"E")==0)
         {
@@ -793,29 +785,25 @@ void traducirRolCliente(char rol)
  * \return Persona devuelve la estructura de la persona
  *
  */
-Persona buscarSegunDNI(char dni[])
+Persona buscarSegunDNI(char dni[]) // Usando arreglos
 {
-    FILE * arch = fopen(archivopersona,"rb");
-    Persona persona;
     int flag = 0;
-
-    if(arch != NULL)
+    Persona persona;
+    int i = 0;
+    int resultado;
+    while(flag == 0 && cantidadpersonas >= i)
     {
-        while(flag == 0 && fread(&persona,sizeof(Persona),1,arch))
+        persona = arreglopersona[i];
+        resultado = strncmp(dni,persona.dni,strlen(dni));
+        if(resultado == 0)
         {
-            int resultado;
-            resultado = strncmp(dni,persona.dni,strlen(dni)-1);
-            if(resultado == 0)
-            {
-                flag = 1;
-            }
-            else
-            {
-                strcpy(persona.dni,"0");
-            }
+            flag = 1;
         }
-
-        fclose(arch);
+        else
+        {
+            strcpy(persona.dni,"0");
+        }
+        i++;
     }
     return persona;
 }
@@ -828,26 +816,29 @@ Persona buscarSegunDNI(char dni[])
  */
 int devolverNumEntrada(char dni[])
 {
-    int i = -1;
+    int i = 0;
     int flag = 0;
-    FILE * arch = fopen(archivopersona,"rb");
     Persona persona;
 
-    while(flag == 0 && fread(&persona,sizeof(Persona),1,arch))
+    while(flag == 0 && cantidadpersonas >= i)
     {
+        persona = arreglopersona[i];
         int resultado;
-        resultado = strncmp(dni,persona.dni,strlen(dni)-1);
+        resultado = strncmp(dni,persona.dni,strlen(dni));
         if(resultado == 0)
         {
             flag = 1;
         }
-        i++;
+        else
+        {
+            i++;
+        }
     }
     return i;
 }
 
 
-/** \brief Devuelve un valor de 1 o 0 segun si el dni esta presente en un archivo
+/** \brief Devuelve un valor de 1 o 0 segun si el dni esta presente en un arreglo
  *
  * \param dni[] char El dni del cliente que se va a insertar
  * \return int 1 si no existe, 0 si existe.
@@ -856,31 +847,28 @@ int devolverNumEntrada(char dni[])
 int verSiDNINoExiste(char dni[])
 {
     int flag = 1;
-
-    if(!archivoExiste(archivopersona) == 1)
+    if(cantidadpersonas == -1 && !archivoExiste(archivopersona))
     {
         flag = 1;
     }
     else
     {
-        FILE * arch = fopen(archivopersona,"rb");
-
-        if(arch != NULL)
+        int resultado;
+        Persona persona;
+        int i = 0;
+        while(flag == 1 && cantidadpersonas >= i)
         {
-            int resultado;
-            Persona persona;
-            while(flag == 1 && fread(&persona,sizeof(Persona),1,arch))
+            persona = arreglopersona[i];
+            resultado = strncmp(dni,persona.dni,strlen(dni));
+            if(resultado == 0)
             {
-                resultado = strncmp(dni,persona.dni,strlen(dni));
-                if(resultado == 0)
-                {
-                    flag = 0;
-                    puts("Se encontro con alguien que tiene el dni ingresado");
-                }
+                flag = 0;
+                puts("Se encontro con alguien que tiene el dni ingresado");
             }
+            i++;
         }
-        fclose(arch);
     }
+
     return flag;
 }
 
@@ -912,5 +900,53 @@ int archivoExiste(char archivonombre[])
 
 
 
+/** \brief Prepara el arreglo dinamico que esta definido globalmente. Teoricamente no deberia traer problemas si se ejecuta mas de una vez.
+ *
+ * \return void se DEBE llamar al principio del programa antes de cualquier otra funcion que usa el arreglo.
+ *
+ */
+void cargarEnArregloPersonasInit()
+{
+    if(archivoExiste(archivopersona) == 1)
+    {
+        cantidadpersonas = -1;
+        FILE * arch = fopen(archivopersona,"rb");
+        Persona persona;
+        while(fread(&persona,sizeof(persona),1,arch)>0)
+        {
+            cargarPersonaArreglo(persona);
+        }
+        fclose(arch);
+    }
+    else
+    {
+        puts("El archivo personas no existe.");
+    }
+}
 
+
+/** \brief Hace espacio en el arreglo y carga una persona al arreglo.
+ *
+ * \param persona Persona Recive una copia de una persona para colocar en el arreglo
+ * \return void Se puede llamar fuera de cargarEnArregloPersonasInit()
+ *
+ */
+void cargarPersonaArreglo(Persona persona)
+{
+    allocarEspacioParaPersona(&arreglopersona);
+    arreglopersona[cantidadpersonas] = persona;
+}
+
+
+/** \brief Hace espacio en el arreglo para una persona, incrementa cantidadpersonas por 1.
+ *
+ * \param Persona**arreglo puntero de arreglo dinamico de personas
+ * \return void
+ *
+ */
+void allocarEspacioParaPersona(Persona**arreglo)
+{
+    cantidadpersonas++;
+    *arreglo = realloc(*arreglo,sizeof(Persona)*(cantidadpersonas+1));
+}
 
