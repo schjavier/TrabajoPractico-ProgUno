@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Auto/Auto.h" />
+		<Unit filename="Auto/AutoValidaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Auto/AutoValidaciones.h" />
 		<Unit filename="Patente/Patente.c">
 			<Option compilerVar="CC" />
 		</Unit>
