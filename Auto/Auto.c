@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 #include "Auto.h"
+#include "AutoValidaciones.h"
+
 
 /**
     Implementación de la interface Auto
@@ -61,9 +63,24 @@ void cargarAnio(Auto *coche){
 
 void cargarKms(Auto *coche){
 
+    int kms;
+    int evaluacion;
+
     printf("Ingrese el kilometraje: ");
     fflush(stdin);
-    scanf("%d", &coche->kms);
+    scanf("%d", &kms);
+    evaluacion = kmsNoNegativo(kms);
+
+    while (evaluacion == 0){
+        printf("Los kilometrajes no pueden ser menores a 0\n");
+        printf("Vuelva a Intentarlo.\n");
+        printf("Ingrese el kilometraje: ");
+        fflush(stdin);
+        scanf("%d", &kms);
+        evaluacion = kmsNoNegativo(kms);
+    }
+
+    coche->kms = kms;
 
 }
 
@@ -75,11 +92,24 @@ void cargarKms(Auto *coche){
 
 
 void cargarPrecioAd(Auto *coche){
+    float precio;
+    int evaluacion;
 
     printf("Ingrese el precio de adquisici%cn: ", 162);
     fflush(stdin);
-    scanf("%f", &coche->precioDeAdquisicion);
+    scanf("%f", &precio);
+    evaluacion = PrecioNoNegativo(precio);
 
+        while(evaluacion == 0){
+            printf("El precio de Adquisici%cn no puede ser un numero negativo.\n", 162);
+            printf("Vuelva a Intentarlo.\n");
+            printf("Ingrese el precio de adquisici%cn: ", 162);
+            fflush(stdin);
+            scanf("%f", &precio);
+            evaluacion = PrecioNoNegativo(precio);
+        }
+
+    coche->precioDeAdquisicion = precio;
 }
 
 /**

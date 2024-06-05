@@ -84,14 +84,15 @@
 
 1716819553 c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.h
 
-1716821269 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.c
+1716821659 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"Usuario.h"
 	"UsuarioValidaciones.h"
 	"../Utiles/Utiles.h"
 
-1716821556 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuariovalidaciones.c
+1716822515 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuariovalidaciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -109,4 +110,9 @@
 	"Utiles.h"
 
 1716821234 c:\users\schja\documents\utn\programacioni\trabajopractico\utiles\utiles.h
+
+1717591965 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.c
+	"AutoValidaciones.h"
+
+1717591965 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.h
 
