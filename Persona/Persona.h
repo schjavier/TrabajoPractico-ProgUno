@@ -3,13 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/// VARIABLES ///
+
 typedef struct { // 174 Bytes
 	char dni[9];
 	char nombre[50];
 	char telefono[14];
 	char direccion[100];
-	char rol; //comprador o vendedor, SE TRADUCE EN RUNTIME
+	char rol; //comprador, vendedor o special (para consecionaria ), SE TRADUCE EN RUNTIME
 } Persona;
+
+Persona*arreglopersona; // Arreglo dinamico de las personas, se puede leer simplemente llamando su nombre, tratenlo como un arreglo.
+int cantidadpersonas; // i Es la posicion final de las personas, tambien define cuanto malloc'ear para el arreglo (n+1) ^
 
 /// FUNCIONALIDAD ///
 
@@ -68,11 +73,15 @@ Persona buscarSegunDNI(char[]);
 int devolverNumEntrada(char[]); // Segun DNI
 int verSiDNINoExiste(char[]); // Verificar asi no hay duplicados.
 int archivoExiste(char[]);
+int esConsecionaria(char[]);
 
 /// CARGA EN MEMORIA ///
 void cargarEnArregloPersonasInit();
 void cargarPersonaArreglo(Persona);
 void allocarEspacioParaPersona(Persona**);
+
+/// CARGA DE MIEMBRO "CONCESIONARIA" ///
+void cargarPersonaConsesioanaria();
 
 
 #endif // PERSONA_H_INCLUDED
