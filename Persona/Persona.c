@@ -6,8 +6,10 @@
 
 #define archivopersona "personas.bin"
 
+/// Variables globales fuera de libreria
 Persona*arreglopersona; // Arreglo dinamico de las personas, se puede leer simplemente llamando su nombre, tratenlo como un arreglo.
-int cantidadpersonas = -1; // -1 es la posicion final de las personas, tambien define cuanto calloc'ear para el arreglo ^
+cantidadpersonas = -1;// -1 es la posicion final de las personas, tambien define cuanto calloc'ear para el arreglo (n+1) ^
+
 
 /// FUNCIONALIDAD ///
 
@@ -91,16 +93,11 @@ void cargarDNI(Persona* persona) /// TODO: POR RAZONES QUE NO ENTIENDO, SI EL ST
         scanf("%s",persona->dni);
         fflush(stdin);
 
-        if(verificarDNI(persona->dni) == 1)
+        if(verificarDNI(persona->dni) == 1 && verificarEnteros(persona->dni) == 1 && esConsecionaria(persona->dni) == 0 && verSiDNINoExiste(persona->dni) == 1)
         {
-            if(verificarEnteros(persona->dni) == 1)
-            {
-                if(verSiDNINoExiste(persona->dni) == 1)
-                {
-                    verificado = 1;
-                }
-            }
+            verificado = 1;
         }
+
         printf("\n");
         fflush(stdin);
     }
@@ -435,13 +432,9 @@ void modificarPersona()
         }
 
 
-        if(verificarDNI(dnibusqueda) == 1 && verificarEnteros(dnibusqueda) == 1 && verSiDNINoExiste(dnibusqueda) == 0)
+        if(verificarDNI(dnibusqueda) == 1 && verificarEnteros(dnibusqueda) == 1 && esConsecionaria(dnibusqueda) == 0 && verSiDNINoExiste(dnibusqueda) == 0)
         {
             verificado = 1;
-        }
-        else
-        {
-            puts("El DNI no se encontro");
         }
     }
 
@@ -454,7 +447,7 @@ void modificarPersona()
         verPersonaFull(persona);
         system("pause");
 
-        if(strcmp(persona.dni,"0")==0 && entrada != -1)
+        if(strcmp(persona.dni,"0")== 0 && entrada != -1)
         {
             puts("No hay nadie con ese DNI.");
         }
@@ -634,7 +627,7 @@ void mostrarPersonasMenu()
  */
 void mostrarPersonasFull()
 {
-    for(int i = 0;i<=cantidadpersonas;i++)
+    for(int i = 1;i<=cantidadpersonas;i++)
     {
         verPersonaFull(arreglopersona[i]);
     }
@@ -647,7 +640,7 @@ void mostrarPersonasFull()
  */
 void mostrarPersonasMin()
 {
-    for(int i = 0;i<=cantidadpersonas;i++)
+    for(int i = 1;i<=cantidadpersonas;i++)
     {
         verPersonaMin(arreglopersona[i]);
     }
@@ -677,7 +670,7 @@ void buscarUnaPersona()
             return;
         }
 
-        if(verificarDNI(dnibusqueda) && verificarEnteros(dnibusqueda) && !verSiDNINoExiste(dnibusqueda))
+        if(verificarDNI(dnibusqueda) && verificarEnteros(dnibusqueda)&& esConsecionaria(dnibusqueda) == 0 && !verSiDNINoExiste(dnibusqueda))
         {
             verificado = 1;
         }
@@ -773,6 +766,9 @@ void traducirRolCliente(char rol)
     case 'V':
         puts("ROL: Vendedor");
         break;
+    case 'S': // De special
+        puts("ROL: Consecionaria");
+        break;
     default:
         puts("ROL: [DESCONOCIDO, CAMBIAR!].");
         break;
@@ -791,19 +787,28 @@ Persona buscarSegunDNI(char dni[]) // Usando arreglos
     Persona persona;
     int i = 0;
     int resultado;
-    while(flag == 0 && cantidadpersonas >= i)
+
+    if(esConsecionaria(dni) == 1)
     {
-        persona = arreglopersona[i];
-        resultado = strncmp(dni,persona.dni,strlen(dni));
-        if(resultado == 0)
+        strcpy(persona.dni,"0");
+        puts("-CONSECIONARIA ENCONTRADA-");
+    }
+    else
+    {
+        while(flag == 0 && cantidadpersonas >= i)
         {
-            flag = 1;
+            persona = arreglopersona[i];
+            resultado = strncmp(dni,persona.dni,strlen(dni));
+            if(resultado == 0)
+            {
+                flag = 1;
+            }
+            else
+            {
+                strcpy(persona.dni,"0");
+            }
+            i++;
         }
-        else
-        {
-            strcpy(persona.dni,"0");
-        }
-        i++;
     }
     return persona;
 }
@@ -819,6 +824,7 @@ int devolverNumEntrada(char dni[])
     int i = 0;
     int flag = 0;
     Persona persona;
+
 
     while(flag == 0 && cantidadpersonas >= i)
     {
@@ -907,9 +913,11 @@ int archivoExiste(char archivonombre[])
  */
 void cargarEnArregloPersonasInit()
 {
+    cantidadpersonas = -1;
+    cargarPersonaConsesioanaria();
+
     if(archivoExiste(archivopersona) == 1)
     {
-        cantidadpersonas = -1;
         FILE * arch = fopen(archivopersona,"rb");
         Persona persona;
         while(fread(&persona,sizeof(persona),1,arch)>0)
@@ -923,6 +931,21 @@ void cargarEnArregloPersonasInit()
         puts("El archivo personas no existe.");
     }
 }
+
+int esConsecionaria(char dni[])
+{
+    int flag = 0;
+    int resultado = 1;
+    resultado = strcmp(dni,"00000000");
+
+    if(resultado == 0)
+    {
+        puts("!!!--- DNI '00000000' RESERVADO para la consecionaria ---!!!");
+        flag = 1;
+    }
+    return flag;
+}
+
 
 
 /** \brief Hace espacio en el arreglo y carga una persona al arreglo.
@@ -950,3 +973,19 @@ void allocarEspacioParaPersona(Persona**arreglo)
     *arreglo = realloc(*arreglo,sizeof(Persona)*(cantidadpersonas+1));
 }
 
+/** \brief Prepara para cargar una persona la arreglo dinamico llamada consecionaria (esta es inmodificable y no se guarda en el archivo)
+ *
+ * \return void
+ *
+ */
+void cargarPersonaConsesioanaria()
+{
+    Persona consecionaria;
+
+    strcpy(consecionaria.dni,"00000000");
+    strcpy(consecionaria.nombre,"CONSECIONARIA");
+    strcpy(consecionaria.direccion,"[DIRECCION CONSEC]");
+    strcpy(consecionaria.telefono,"0000000000");
+    consecionaria.rol = 'S'; // S de special
+    cargarPersonaArreglo(consecionaria);
+}
