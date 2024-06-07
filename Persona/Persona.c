@@ -117,7 +117,7 @@ void cargarNombre(Persona* persona)
     {
         puts("Nombre completo de la persona?");
         fflush(stdin);
-        scanf("%s",persona->nombre);
+        gets(persona->nombre);
         fflush(stdin);
 
         if(verificarNombre(persona->nombre) == 1)
@@ -239,7 +239,7 @@ int verificarNombre(char nombre[])
     int flag = 1;
     int largo = strlen(nombre);
 
-    if(largo < 3 || largo > 48)
+    if(largo < 3 || largo > 46)
     {
         flag = 0;
     }
@@ -275,7 +275,7 @@ int verificarDir(char dir[])
 {
     int flag = 1;
 
-    if(strlen(dir) <= 3 || strlen(dir) >= 98)
+    if(strlen(dir) <= 3 || strlen(dir) >= 96)
     {
         flag = 0;
     }
@@ -341,7 +341,7 @@ int verificarTel(char tel[])
 {
     int flag = 0;
     int largo = strlen(tel);
-    if(largo >= 10 && largo<=13)
+    if(largo >= 10 && largo<=12)
     {
         flag = 1;
     }
@@ -531,7 +531,7 @@ void menuDeModificacionPersona(Persona personanueva,int entrada)
             if(entrada != -1)
             {
                 arreglopersona[entrada] = personanueva;
-                guardarCambiosPersona(personanueva,entrada);
+                guardarCambiosPersona(personanueva,entrada-1);
             }
             else
             {
@@ -595,11 +595,11 @@ void menuVerPersonas()
 void mostrarPersonasMenu()
 {
     char eleccion;
-    while(eleccion != 'C' && eleccion != 'M' && eleccion != 'E')
+    while(eleccion != 'C' && eleccion != 'M' && eleccion != 'E' && eleccion != 'T')
     {
         system("cls");
         fflush(stdin);
-        puts("Mostrar completo (C) o Mostrar minimo (M)?");
+        puts("Mostrar completo (C), Mostrar minimo (M) o mostrar los datos en una tabla (T)");
         puts("E para salir");
 
         scanf("%c",&eleccion);
@@ -612,6 +612,9 @@ void mostrarPersonasMenu()
             break;
         case 'M':
             mostrarPersonasMin();
+            break;
+        case 'T':
+            mostrarPersonaOrdenadoSegun();
             break;
         case 'E':
             puts("Saliendo...");
@@ -821,7 +824,7 @@ Persona buscarSegunDNI(char dni[]) // Usando arreglos
  */
 int devolverNumEntrada(char dni[])
 {
-    int i = 0;
+    int i = 1;
     int flag = 0;
     Persona persona;
 
@@ -988,4 +991,160 @@ void cargarPersonaConsesioanaria()
     strcpy(consecionaria.telefono,"0000000000");
     consecionaria.rol = 'S'; // S de special
     cargarPersonaArreglo(consecionaria);
+}
+
+void mostrarPersonaOrdenadoSegun()
+{
+    int lineas,columnas;
+    Persona**arrpersonalocal;
+    lineas = cantidadpersonas;
+
+
+    char matrizdni[lineas][9];
+    char matriznombre[lineas][50];
+    char matriztel[lineas][14];
+    char matrizdireccion[lineas][100];
+    char arreglorol[lineas];
+
+    char rol;
+
+	Persona persona;
+
+	int posarr = 0;
+    for(int i = 1;i<=cantidadpersonas;i++)
+    {
+        persona = arreglopersona[i];
+
+        strcpy(matrizdni[posarr],persona.dni);
+        strcpy(matriznombre[posarr],persona.nombre);
+        strcpy(matriztel[posarr],persona.telefono);
+        strcpy(matrizdireccion[posarr],persona.direccion);
+        rol = persona.rol;
+        arreglorol[posarr] = rol;
+        posarr++;
+    }
+
+
+
+    int eleccion = 0;
+
+    fflush(stdin);
+    system("cls");
+    puts("Basado en que ordenar");
+    puts("1- DNI");
+    puts("2- Nombre");
+    puts("3- Telefono");
+    puts("4- Direccion");
+    puts("Cualquier cosa para salir");
+    scanf("%i",&eleccion);
+
+    int i = 0;
+    int menor;
+    for(int i = 0;i<cantidadpersonas;i++)
+    {
+
+
+        switch(eleccion)
+        {
+            case 1:
+                menor = ordenarSegunParam(i,9,matrizdni);
+                break;
+            case 2:
+                menor = ordenarSegunParam(i,50,matriznombre);
+                break;
+            case 3:
+                menor = ordenarSegunParam(i,14,matriztel);
+                break;
+            case 4:
+                menor = ordenarSegunParam(i,100,matrizdireccion);
+                break;
+            default:
+                puts("Cancelando...");
+                return;
+                break;
+        }
+
+
+        char dni[9]; // temp
+        char nombrepersona[50];
+        char telefono[14];
+        char direccion[100];
+        char role;
+
+        strcpy(dni,matrizdni[i]);
+        strcpy(nombrepersona,matriznombre[i]);
+        strcpy(telefono,matriztel[i]);
+        strcpy(direccion,matrizdireccion[i]);
+        role = arreglorol[i];
+
+
+        strcpy(matrizdni[i],matrizdni[menor]);
+        strcpy(matriznombre[i],matriznombre[menor]);
+        strcpy(matriztel[i],matriztel[menor]);
+        strcpy(matrizdireccion[i],matrizdireccion[menor]);
+        arreglorol[i] = arreglorol[menor];
+
+
+        strcpy(matrizdni[menor],dni);
+        strcpy(matriznombre[menor],nombrepersona);
+        strcpy(matriztel[menor],telefono);
+        strcpy(matrizdireccion[menor],direccion);
+        arreglorol[menor] = role;
+    }
+
+    int sizecolumnanombre = 50;
+    int sizecolumnadir = 95;
+    int sizecolumnatel = 15;
+    int sizecolumnadni = 8;
+    int sizecolumnarol = 3;
+
+    system("cls");
+
+
+    int contadordeCaracters = (sizecolumnarol + sizecolumnadni + sizecolumnadir +sizecolumnatel+5) + sizecolumnanombre;
+    puts("Personas ordenadas segun lo pedido");
+    puts("SE RECOMIENDA MAXIMIZAR LA VENTANA PARA ABRIR"); // La verdad no se si se puede expandir la ventana :(
+    system("pause");
+    imprimirSeparador(contadordeCaracters);
+    printf("%-*s  |%-*s|%-*s|%-*s|%-*s\n", sizecolumnadni, "|DNI", sizecolumnanombre,"NOMBRE", sizecolumnatel, "TELEFONO",sizecolumnadir,"DIRECCION",sizecolumnarol,"ROL|"); // hace espacio para columnas
+
+
+    imprimirSeparador(contadordeCaracters);
+    for(int i = 0;i<cantidadpersonas;i++)
+    {
+        printf("|%-*s |",sizecolumnadni,matrizdni[i]);
+        printf("%-*s|",sizecolumnanombre,matriznombre[i]);
+        printf("%-*s|",sizecolumnatel,matriztel[i]);
+        printf("%-*s|",sizecolumnadir,matrizdireccion[i]);
+        printf("%-*c|\n",sizecolumnarol,arreglorol[i]);
+        imprimirSeparador(contadordeCaracters);
+    }
+    system("pause");
+}
+
+int ordenarSegunParam(int i,int size,char matriz[][size])
+{
+    int menor = i;
+    for(int j = i;j<cantidadpersonas;j++)
+    {
+        int resultado;
+        resultado = strcmp(matriz[menor],matriz[j]);
+        if(resultado == 1)
+        {
+            menor = j;
+        }
+    }
+    return menor;
+}
+
+void imprimirSeparador(int sizeChars)
+{
+    printf("|");
+    int total = sizeChars;
+    for(int i = 0;total>i;i++)
+    {
+        printf("-");
+    }
+    printf("|");
+    printf("\n");
 }
