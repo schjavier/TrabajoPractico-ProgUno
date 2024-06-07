@@ -84,4 +84,11 @@ void allocarEspacioParaPersona(Persona**);
 void cargarPersonaConsesioanaria();
 
 
+/// Matrices ///
+
+void mostrarPersonaOrdenadoSegun();
+
+int ordenarSegunParam(int,int param,char[][param]);
+void imprimirSeparador(int);
+
 #endif // PERSONA_H_INCLUDED
