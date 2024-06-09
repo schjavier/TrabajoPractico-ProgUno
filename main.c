@@ -5,20 +5,36 @@
 #include "AutoArchivo/AutoArchivo.h"
 #include "Auto/Auto.h"
 #include "Usuario/Usuario.h"
+#include "Persona/Persona.h"
+#include "Utiles/Utiles.h"
+
 
 
 int main()
 {
-//    AutoArchivo coche;
-//    coche = cargarAutoArchivo();
-//    mostrarAutoArchivo(coche);
-//
-//    Auto coche;
-//    coche = cargarAuto();
-//    mostrarAuto(&coche);
 
-    Usuario user;
-    crearUsuario(&user);
+    char nombreArchivo[] = "personas.bin";
+//    agregarPersona();
+//    Persona *arr;
+//    int cantidadPersonas = traerPersonas(nombreArchivo, arr);
+    menuCargaPersonas();
+    verArchivoPersonas(nombreArchivo);
+//    Persona *arr = &arreglopersona;
+//    int cantidad = &cantidadpersonas;
+//    printf("%d", cantidadPersonas);
+
+
+//
+//    AutoArchivo coche;
+//    Auto coche2;
+//    coche2 = cargarAuto(&arrPersona);
+//    coche = cargarAutoArchivo(coche2);
+//    mostrarAuto(&coche2);
+//    mostrarAutoArchivo(coche);
+
+
+//    Usuario user;
+//    crearUsuario(&user);
 
 
 

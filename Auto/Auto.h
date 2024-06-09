@@ -5,6 +5,7 @@
 #include "../Patente/Patente.h"
 
 
+
 /**
     interface de la la estructura auto
 
@@ -33,10 +34,19 @@ void cargarModelo(Auto*);
 void cargarAnio(Auto*);
 void cargarKms(Auto*);
 void cargarPrecioAd(Auto*);
+void cargarTitular(Auto*);
 
-Auto cargarAuto();
+Auto cargarAuto(Persona**);
+
 void mostrarAuto(Auto*);
-void modificarAuto(Auto*);
+
+int traerPersonas(char*, Persona*);
+
+
+/** Funciones para la busqueda y edicion de un Auto **/
+int posicionAuto(Patente*);
+Auto buscarAuto(Patente*);
+Auto modificarAuto(Auto*);
 
 
 

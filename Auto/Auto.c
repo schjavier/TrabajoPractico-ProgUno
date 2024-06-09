@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "Auto.h"
 #include "AutoValidaciones.h"
+#include "../AutoArchivo/AutoArchivo.h"
+#include "../Persona/Persona.h"
 
 
 /**
@@ -51,6 +54,91 @@ void cargarAnio(Auto *coche){
     printf("Ingrese el a%co: ", 164);
     fflush(stdin);
     scanf("%d", &coche->anio);
+
+}
+/**
+    Funcion que carga el nombre del titular del vehiculo.
+    Param: Auto* coche -> puntero a una estructura tipo auto
+ **/
+
+
+void cargarTitular(Auto *coche){
+
+    char opcion;
+    char dni[9];
+    Persona consecionaria = arreglopersona[0] ;
+    Persona aux;
+
+    printf("\tCargaremos los datos del titular\n");
+    printf("\tElija una de estas opciones:\n");
+    printf("\tR - Persona registrada\nN - Persona nueva\nC - Concesionaria");
+    fflush(stdin);
+    scanf("%c", &opcion);
+
+    letrasMayus(&opcion);
+    //PROBLEMAS CON LA AGREGADA DE LA PERSONA!
+    switch(opcion){
+    case 'R':
+        printf("Ingrese el DNI de la persona: ");
+        fflush(stdin);
+        gets(dni);
+        aux = buscarSegunDNI(dni);
+            if (strcmp(aux.dni, "0") == 0){
+                printf("la persona no se encuentra en el registro.");
+
+                }else {
+
+                    coche->titular = aux;
+
+                }
+
+
+        break;
+
+    case 'N':
+        agregarPersona();
+        coche->titular = arreglopersona[cantidadpersonas];
+        break;
+    case 'C':
+        coche->titular = consecionaria;
+        break;
+    }
+
+
+
+}
+
+/**
+
+    Funcion que trae del archivo de personas todas las personas.
+    Params:
+    Return: devuelve un puntero a persona, que representa la direccion de memoria de la primera posicion del arreglo de Personas.
+
+**/
+
+int traerPersonas(char* nombreArchivo, Persona *arrDePersonas){
+FILE *archivo = fopen(nombreArchivo, "rb");
+
+Persona aux;
+int i = 0;
+Persona *arr = (Persona*)malloc(sizeof(Persona));
+
+if (archivo != NULL){
+
+    while (fread(&aux, sizeof(Persona), 1, archivo) > 0){
+        arr[i] = aux;
+        arr = (Persona*)realloc(arr, sizeof(Persona)*1);
+        i++;
+
+    }
+
+} else {
+
+    printf("Problemas abriendo el archivo");
+
+}
+fclose(archivo);
+return i;
 
 }
 
@@ -118,7 +206,7 @@ void cargarPrecioAd(Auto *coche){
     Return: devuelve una estrucutra de tipo Auto cargada
 **/
 
-Auto cargarAuto(){
+Auto cargarAuto(Persona **arrPersonas){
 
     Auto coche;
 
@@ -128,7 +216,7 @@ Auto cargarAuto(){
     cargarModelo(&coche);
     cargarAnio(&coche);
     cargarKms(&coche);
-    cargarNombre(&coche.titular);
+//    cargarTitular(&coche, arrPersonas);
     cargarPrecioAd(&coche);
 
 return coche;
@@ -147,8 +235,20 @@ void mostrarAuto(Auto *coche){
     printf(":: MARCA: %s::\n", coche->marca);
     printf(":: MODELO: %s::\n", coche->modelo);
     printf(":: A%cO: %d::\n", 165, coche->anio);
-    printf(":: KILOMETRAJE: %d::\n", coche->kms);
+    printf(":: KILOMETRAJE: %d kms::\n", coche->kms);
     printf(":: NOMBRE DEL TITULAR: %s::\n", coche->titular.nombre);
-    printf(":: PRECIO DE ADQUISICION: %f::\n", coche->precioDeAdquisicion);
+    printf(":: PRECIO DE ADQUISICION: %.2f::\n", coche->precioDeAdquisicion);
+
+}
+
+/**
+
+    Funcion que permite modificar un auto.
+
+**/
+Auto modificarAuto(Auto *autoAModificar){
+
+
+
 
 }
