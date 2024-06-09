@@ -69,14 +69,14 @@ void cargarTitular(Auto *coche){
     Persona consecionaria = arreglopersona[0] ;
     Persona aux;
 
-    printf("\tCargaremos los datos del titular\n");
+    printf("\n\tCargaremos los datos del titular\n");
     printf("\tElija una de estas opciones:\n");
-    printf("\tR - Persona registrada\nN - Persona nueva\nC - Concesionaria");
+    printf("R - Persona registrada\nN - Persona nueva\nC - Concesionaria\n");
     fflush(stdin);
     scanf("%c", &opcion);
 
     letrasMayus(&opcion);
-    //PROBLEMAS CON LA AGREGADA DE LA PERSONA!
+
     switch(opcion){
     case 'R':
         printf("Ingrese el DNI de la persona: ");
@@ -108,39 +108,7 @@ void cargarTitular(Auto *coche){
 
 }
 
-/**
 
-    Funcion que trae del archivo de personas todas las personas.
-    Params:
-    Return: devuelve un puntero a persona, que representa la direccion de memoria de la primera posicion del arreglo de Personas.
-
-**/
-
-int traerPersonas(char* nombreArchivo, Persona *arrDePersonas){
-FILE *archivo = fopen(nombreArchivo, "rb");
-
-Persona aux;
-int i = 0;
-Persona *arr = (Persona*)malloc(sizeof(Persona));
-
-if (archivo != NULL){
-
-    while (fread(&aux, sizeof(Persona), 1, archivo) > 0){
-        arr[i] = aux;
-        arr = (Persona*)realloc(arr, sizeof(Persona)*1);
-        i++;
-
-    }
-
-} else {
-
-    printf("Problemas abriendo el archivo");
-
-}
-fclose(archivo);
-return i;
-
-}
 
 /**
     Funcion que carga el campo Kms de la estructura.
@@ -206,7 +174,7 @@ void cargarPrecioAd(Auto *coche){
     Return: devuelve una estrucutra de tipo Auto cargada
 **/
 
-Auto cargarAuto(Persona **arrPersonas){
+Auto cargarAuto(){
 
     Auto coche;
 
@@ -216,7 +184,7 @@ Auto cargarAuto(Persona **arrPersonas){
     cargarModelo(&coche);
     cargarAnio(&coche);
     cargarKms(&coche);
-//    cargarTitular(&coche, arrPersonas);
+    cargarTitular(&coche);
     cargarPrecioAd(&coche);
 
 return coche;

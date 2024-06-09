@@ -36,11 +36,9 @@ void cargarKms(Auto*);
 void cargarPrecioAd(Auto*);
 void cargarTitular(Auto*);
 
-Auto cargarAuto(Persona**);
+Auto cargarAuto();
 
 void mostrarAuto(Auto*);
-
-int traerPersonas(char*, Persona*);
 
 
 /** Funciones para la busqueda y edicion de un Auto **/

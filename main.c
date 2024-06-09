@@ -13,26 +13,21 @@
 int main()
 {
 
-    char nombreArchivo[] = "personas.bin";
-//    agregarPersona();
-//    Persona *arr;
-//    int cantidadPersonas = traerPersonas(nombreArchivo, arr);
-    menuCargaPersonas();
-    verArchivoPersonas(nombreArchivo);
-//    Persona *arr = &arreglopersona;
-//    int cantidad = &cantidadpersonas;
-//    printf("%d", cantidadPersonas);
+menuCargaPersonas();
 
 
-//
-//    AutoArchivo coche;
-//    Auto coche2;
-//    coche2 = cargarAuto(&arrPersona);
-//    coche = cargarAutoArchivo(coche2);
-//    mostrarAuto(&coche2);
-//    mostrarAutoArchivo(coche);
 
+    AutoArchivo coche;
+    Auto coche2;
+    coche2 = cargarAuto();
+    coche = cargarAutoArchivo(coche2);
+    mostrarAuto(&coche2);
+    mostrarAutoArchivo(coche);
 
+for (int i = 0; i<cantidadpersonas; i++){
+    verPersonaFull(arreglopersona[i]);
+
+}
 //    Usuario user;
 //    crearUsuario(&user);
 
