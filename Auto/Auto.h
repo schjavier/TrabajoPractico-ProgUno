@@ -29,6 +29,9 @@ typedef struct {
 
 } Auto;
 
+Auto *arregloAutos;
+int cantidadAutos;
+
 void cargarMarca(Auto*);
 void cargarModelo(Auto*);
 void cargarAnio(Auto*);
@@ -42,10 +45,14 @@ void mostrarAuto(Auto*);
 
 
 /** Funciones para la busqueda y edicion de un Auto **/
-int posicionAuto(Patente*);
-Auto buscarAuto(Patente*);
-Auto modificarAuto(Auto*);
+int posicionAuto(Patente*);// no se usa ni esta definida
+Auto buscarAutoPatente(Patente, int*);
+Auto modificarAuto(Auto);
 
+void cargarAutoArreglo(Auto);
+void designarEspacioAuto(Auto**);
+void cargarEnArregloAutos();
 
+void listarAutos();
 
 #endif // AUTO_H_INCLUDED

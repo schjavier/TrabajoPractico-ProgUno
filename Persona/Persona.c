@@ -6,11 +6,9 @@
 
 #define archivopersona "personas.bin"
 
-<<<<<<< HEAD
-/// Variables globales fuera de libreria
-=======
 
->>>>>>> 99023d3 (Modificacione en la libreria auto)
+/// Variables globales fuera de libreria
+
 Persona*arreglopersona; // Arreglo dinamico de las personas, se puede leer simplemente llamando su nombre, tratenlo como un arreglo.
 cantidadpersonas = -1;// -1 es la posicion final de las personas, tambien define cuanto calloc'ear para el arreglo (n+1) ^
 

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1717955225 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
+1718028430 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
 	<stdio.h>
 	<stdlib.h>
 	"AutoArchivo/AutoArchivo.h"
@@ -7,6 +7,7 @@
 	"Usuario/Usuario.h"
 	"Persona/Persona.h"
 	"Utiles/Utiles.h"
+	"Auto/AutoMenu.h"
 
 1716160826 c:\users\schja\documents\utn\programacioni\trabajopractico\patente.h
 
@@ -55,7 +56,7 @@
 
 1716160826 c:\users\schja\documents\utn\programacioni\trabajopractico\patente\patente.h
 
-1717954075 source:c:\users\schja\documents\utn\programacioni\trabajopractico\persona\persona.c
+1717957093 source:c:\users\schja\documents\utn\programacioni\trabajopractico\persona\persona.c
 	"persona.h"
 	<stdio.h>
 	<stdlib.h>
@@ -66,7 +67,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1717955186 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.c
+1718029771 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -74,12 +75,13 @@
 	"AutoValidaciones.h"
 	"../AutoArchivo/AutoArchivo.h"
 	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
 
-1717954739 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.h
+1718029771 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.h
 	"../Persona/Persona.h"
 	"../Patente/Patente.h"
 
-1717954075 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.c
+1718028751 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -87,7 +89,7 @@
 	"AutoArchivo.h"
 	"../Patente/Patente.h"
 
-1717954075 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.h
+1717974100 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.h
 	"../Patente/Patente.h"
 	"../Auto/Auto.h"
 	"../Persona/Persona.h"
@@ -126,4 +128,17 @@
 	"AutoValidaciones.h"
 
 1717592546 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.h
+
+1718029554 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\automenu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Auto.h"
+	"AutoValidaciones.h"
+	"AutoMenu.h"
+	"../AutoArchivo/AutoArchivo.h"
+	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
+
+1718028282 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\automenu.h
 

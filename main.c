@@ -7,7 +7,7 @@
 #include "Usuario/Usuario.h"
 #include "Persona/Persona.h"
 #include "Utiles/Utiles.h"
-
+#include "Auto/AutoMenu.h"
 
 
 int main()
@@ -15,19 +15,9 @@ int main()
 
 menuCargaPersonas();
 
+autoMenu();
 
 
-    AutoArchivo coche;
-    Auto coche2;
-    coche2 = cargarAuto();
-    coche = cargarAutoArchivo(coche2);
-    mostrarAuto(&coche2);
-    mostrarAutoArchivo(coche);
-
-for (int i = 0; i<cantidadpersonas; i++){
-    verPersonaFull(arreglopersona[i]);
-
-}
 //    Usuario user;
 //    crearUsuario(&user);
 

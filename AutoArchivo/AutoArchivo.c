@@ -11,9 +11,6 @@
 **/
 
 
-/** Constante con el nombre de archivo, para persistir los usuarios **/
-#define ARCHIVO_AUTOS "AutoArchivo.bin"
-
 
 /**
     Función que carga una estructura tipo AutoArchivo.
@@ -51,9 +48,6 @@ printf("Patente: %s-%s\n", coche.patente.letras, coche.patente.numeros);
 printf("Marca : %s\n", coche.marca);
 printf("Modelo : %s\n", coche.modelo);
 printf("A%co : %s\n",164, coche.modelo);
-printf("Kilometraje : %d\n", coche.kms);
-printf("DNI del titular : %s\n", coche.dniTitular);
-printf("Precio de Adquisici%cn : %.2f\n", 162, coche.precioDeAdquisicion);
 printf("-----------------------------------------\n");
 }
 
@@ -120,6 +114,15 @@ fclose(archivo);
 return contador;
 
 }
+
+/**
+    Funcion que carga el arreglo dinamico de autos en venta.
+    Params: char *nombreArchivo -> puntero al nombre del archivo.
+            AutoArchivo **autosEnVenta -> puntero doble de tpo AutoArchivo
+    Return: int i -> la posicion del final del arreglo
+
+**/
+
 int cargarArrAutosEnVenta(char *nombreArchivo, AutoArchivo **autosEnVenta){
     FILE *archivo = (fopen(nombreArchivo, "rb"));
 
@@ -144,6 +147,14 @@ int cargarArrAutosEnVenta(char *nombreArchivo, AutoArchivo **autosEnVenta){
     }
 return i;
 }
+
+/**
+
+    Funcion que muestra todos los autos en venta, o sea a nombre de la concesionaria
+    Params: AutoArchivo** autosEnVenta -> un puntero doble a un arreglo de tipo AutoArchivo
+            int validos -> la cantidad de entradas validas del arreglo
+
+**/
 
 void mostarAutosEnVenta(AutoArchivo** autosEnVenta, int validos){
 
@@ -179,6 +190,34 @@ if (archivo !=NULL){
     printf("Tuvimos problemas abriendo el archivo");
 
 }
+
+fclose(archivo);
+
+}
+
+/**
+
+Funcion que guarda un AutoArchivo en la posicion indicada
+Params: AutoArchivo coche -> el coche a guardar
+        char *nombreArchivo -> puntero al archivo donde guardar
+        int pos -> las posicion donde guardar el auto
+
+**/
+
+void guardarAutoArchivoEnPos(AutoArchivo coche, char *nombreArchivo, int pos){
+    FILE* archivo = fopen(nombreArchivo, "ab");
+
+    int posicion = pos-1;
+
+    if (archivo != NULL){
+        fseek( archivo, sizeof(AutoArchivo)*posicion, SEEK_SET);
+        fwrite(&coche, sizeof(AutoArchivo), 1, archivo);
+
+    } else {
+
+    printf("problemas abriendo el archivo");
+
+    }
 
 fclose(archivo);
 

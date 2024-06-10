@@ -5,6 +5,9 @@
 #include "../Auto/Auto.h"
 #include "../Persona/Persona.h"
 
+/** Constante con el nombre de archivo, para persistir los usuarios **/
+#define ARCHIVO_AUTOS "AutoArchivo.bin"
+
 /**
     Definicion de tipo.
 **/
@@ -19,6 +22,7 @@ typedef struct {
 } AutoArchivo;
 
 
+
 AutoArchivo cargarAutoArchivo(Auto);
 
 int contarAutoEnVenta(char*);
@@ -29,6 +33,7 @@ void mostarAutosEnVenta(AutoArchivo**, int validos);
 void mostrarAutoArchivo(AutoArchivo);
 
 void guardarAutoArchivo(AutoArchivo, char*);
+void guardarAutoArchivoEnPos(AutoArchivo, char*, int);
 
 
 #endif // AUTOARCHIVO_H_INCLUDED
