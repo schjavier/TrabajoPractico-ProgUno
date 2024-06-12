@@ -373,7 +373,7 @@ void guardarPersonaAFile(Persona persona)
     fclose(arch);
 }
 
-/** \brief
+/** \brief Guarda cambios de persona que se hicieron
  *
  * \param persona Persona Sobreescribe datos ya antes cargados del archivo de clientes
  * \param entrada int Representa la "entrada" que es al respecto del inicio del archivo
@@ -623,7 +623,7 @@ void mostrarPersonasMenu()
     }
 }
 
-/** \brief Loop que recorre el archivo de clientes, para mostrar todos sus contenidos
+/** \brief Loop que recorre el arreglo de clientes, para mostrar todos sus contenidos
  *
  * \return void
  *
@@ -636,7 +636,7 @@ void mostrarPersonasFull()
     }
 }
 
-/** \brief Loop que recorre el archivo de clientes, para mostrar los contenidos mas importantes
+/** \brief Loop que recorre el arreglo de clientes, para mostrar los contenidos mas importantes
  *
  * \return void
  *
@@ -935,6 +935,12 @@ void cargarEnArregloPersonasInit()
     }
 }
 
+/** \brief Verifica si el dni ingresado es la consecionaria
+ *
+ * \param dni[] char el dni ingresado del usuario
+ * \return int 1 si es 00000000, 0 si no
+ *
+ */
 int esConsecionaria(char dni[])
 {
     int flag = 0;
@@ -986,13 +992,18 @@ void cargarPersonaConsesioanaria()
     Persona consecionaria;
 
     strcpy(consecionaria.dni,"00000000");
-    strcpy(consecionaria.nombre,"CONSECIONARIA");
+    strcpy(consecionaria.nombre,"CONCESIONARIA");
     strcpy(consecionaria.direccion,"[DIRECCION CONSEC]");
     strcpy(consecionaria.telefono,"0000000000");
     consecionaria.rol = 'S'; // S de special
     cargarPersonaArreglo(consecionaria);
 }
 
+/** \brief Una funcion que genera matrices de strings para ordenarlos segun lo que pide el usuario
+ *
+ * \return void
+ *
+ */
 void mostrarPersonaOrdenadoSegun()
 {
     int lineas,columnas;
@@ -1093,7 +1104,7 @@ void mostrarPersonaOrdenadoSegun()
     }
 
     int sizecolumnanombre = 50;
-    int sizecolumnadir = 95;
+    int sizecolumnadir = 50;
     int sizecolumnatel = 15;
     int sizecolumnadni = 8;
     int sizecolumnarol = 3;
@@ -1110,18 +1121,32 @@ void mostrarPersonaOrdenadoSegun()
 
 
     imprimirSeparador(contadordeCaracters);
+    int largopalabra = 0;
+    char*direccioncambiada;
     for(int i = 0;i<cantidadpersonas;i++)
     {
         printf("|%-*s |",sizecolumnadni,matrizdni[i]);
         printf("%-*s|",sizecolumnanombre,matriznombre[i]);
         printf("%-*s|",sizecolumnatel,matriztel[i]);
-        printf("%-*s|",sizecolumnadir,matrizdireccion[i]);
+
+        largopalabra = strlen(matrizdireccion[i]);
+        direccioncambiada = acortarDireccion(matrizdireccion[i],largopalabra);
+
+        printf("%-*s|",sizecolumnadir,direccioncambiada);
         printf("%-*c|\n",sizecolumnarol,arreglorol[i]);
         imprimirSeparador(contadordeCaracters);
     }
     system("pause");
 }
 
+/** \brief Devuelve la posicion de la matriz menor (selection sort)
+ *
+ * \param i int Iteracion actual
+ * \param size int tamaño de la matriz
+ * \param matriz[][size] char matriz de caracteres
+ * \return int posicion menor del arreglo
+ *
+ */
 int ordenarSegunParam(int i,int size,char matriz[][size])
 {
     int menor = i;
@@ -1137,6 +1162,12 @@ int ordenarSegunParam(int i,int size,char matriz[][size])
     return menor;
 }
 
+/** \brief Escribe '-' x cantidad de veces
+ *
+ * \param sizeChars int cantidad de veces que printea el '-'
+ * \return void
+ *
+ */
 void imprimirSeparador(int sizeChars)
 {
     printf("|");
@@ -1148,3 +1179,49 @@ void imprimirSeparador(int sizeChars)
     printf("|");
     printf("\n");
 }
+
+/** \brief Acorta una direccion y agregar '...' si es muy largo
+ *
+ * \param texto[] char El texto que llega de la matriz
+ * \param largotexto int El largo de un texto que llega del loop
+ * \return char* String que se genera
+ *
+ */
+char * acortarDireccion(char texto[],int largotexto)
+{
+    int cortar = 0;
+    int largoactual = 0;
+    char * textonuevo;
+
+    if(largotexto >= 46)
+    {
+        largotexto = 46;
+        cortar = 1;
+    }
+
+    for(int i = 0;i<=largotexto;i++)
+    {
+        textonuevo = realloc(textonuevo, largoactual+1*sizeof(char));
+        textonuevo[i] = texto[i];
+        largoactual++;
+    }
+
+    if(cortar == 1)
+    {
+        textonuevo = realloc(textonuevo, largoactual*sizeof(char));
+        largoactual++;
+        textonuevo[46] = '.';
+        textonuevo = realloc(textonuevo, largoactual*sizeof(char));
+        largoactual++;
+        textonuevo[47] = '.';
+        textonuevo = realloc(textonuevo, largoactual*sizeof(char));
+        largoactual++;
+        textonuevo[48] = '.';
+        textonuevo = realloc(textonuevo, largoactual*sizeof(char));
+        largoactual++;
+        textonuevo[49] = '\0';
+        textonuevo = realloc(textonuevo, largoactual*sizeof(char));
+    }
+    return textonuevo;
+}
+
