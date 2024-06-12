@@ -90,5 +90,6 @@ void mostrarPersonaOrdenadoSegun();
 
 int ordenarSegunParam(int,int param,char[][param]);
 void imprimirSeparador(int);
+char * acortarDireccion(char[],int);
 
 #endif // PERSONA_H_INCLUDED
