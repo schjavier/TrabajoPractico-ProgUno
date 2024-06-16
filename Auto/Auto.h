@@ -3,6 +3,7 @@
 
 #include "../Persona/Persona.h"
 #include "../Patente/Patente.h"
+#include "../AutoArchivo/AutoArchivo.h"
 
 
 
@@ -32,6 +33,12 @@ typedef struct {
 Auto *arregloAutos;
 int cantidadAutos;
 
+Auto *arregloAutosEnVenta;
+int cantidadEnVenta;
+
+Auto *arregloAutosNuevos;
+int cantidadNuevos;
+
 void cargarMarca(Auto*);
 void cargarModelo(Auto*);
 void cargarAnio(Auto*);
@@ -41,7 +48,7 @@ void cargarTitular(Auto*);
 
 Auto cargarAuto();
 
-void mostrarAuto(Auto*);
+void mostrarAuto(Auto);
 
 
 /** Funciones para la busqueda y edicion de un Auto **/
@@ -49,10 +56,34 @@ int posicionAuto(Patente*);// no se usa ni esta definida
 Auto buscarAutoPatente(Patente, int*);
 Auto modificarAuto(Auto);
 
+Persona buscarTitular(char[]);
+
 void cargarAutoArreglo(Auto);
 void designarEspacioAuto(Auto**);
-void cargarEnArregloAutos();
+void cargarEnArregloAutosInit();
+
+void mostarArrAutos();
 
 void listarAutos();
+
+Auto convertirAuto(AutoArchivo);
+
+/**------------------------------------------punto 5------------------------------------------------**/
+
+int  enVenta(Auto);
+void designarEspacioAutoVenta(Auto**);
+void cargarAutoEnVentaEnArreglo(Auto);
+void cargarArregloAutosEnVentaInit();
+
+/**----------------------------------------Ordenacion--------------------------------------------**/
+void designarEspacioAutoNuevos(Auto**);
+void cargarAutoNuevoEnArreglo(Auto);
+void cargarArregloAutosNuevosInit();
+
+int esNuevo(Auto);
+int encontrarMenor(Auto[], int, int);
+void ordenarAutos(Auto[], int);
+void mostrarAutosNuevos();
+
 
 #endif // AUTO_H_INCLUDED

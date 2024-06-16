@@ -4,6 +4,6 @@
 
 int PrecioNoNegativo(float);
 int kmsNoNegativo(int);
-
+int esVendedor(Persona);
 
 #endif // AUTOVALIDACIONES_H_INCLUDED

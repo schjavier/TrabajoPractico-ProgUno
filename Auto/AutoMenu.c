@@ -15,6 +15,7 @@ void autoMenu(){
 
 int opcion;
 Auto coche;
+Auto *pCoche = &coche;
 AutoArchivo cocheArchivo;
 AutoArchivo **enVenta;
 Patente patente;
@@ -32,7 +33,10 @@ while (opcion != 0){
     printf("2 - Modificar un auto\n");
     printf("3 - Listar Autos\n"); // marca modelo patente
     printf("4 - Ver Informaci%cn completa de un Auto\n", 162); // toda la info
-    printf("5 - Ver Autos en venta\n"); //marca modelo, patente año
+    printf("5 - Ver Autos en venta\n"); //marca modelo, patente año  mostrar bien esta info
+    printf("6 - Mostrar autos por antiguedad (menos de 10 a%cos)\n", 164);
+
+
     printf("Elija una opcion: ");
     scanf("%d", &opcion);
 
@@ -42,28 +46,34 @@ while (opcion != 0){
             coche = cargarAuto();
             cocheArchivo = cargarAutoArchivo(coche);
             guardarAutoArchivo(cocheArchivo, ARCHIVO_AUTOS);
+            cargarAutoArreglo(coche);
             break;
         case 2:
             printf("Ingrese la Patente del auto que quiere modificar: \n");
             patente = cargarPatente();
             coche = buscarAutoPatente(patente, &posicion);
-            modificarAuto(coche);
+
+            mostrarAuto(coche);
+            coche = modificarAuto(coche);
+            // despuesd e modificar cargar en el arreglo
             cocheArchivo = cargarAutoArchivo(coche);
             guardarAutoArchivoEnPos(cocheArchivo, ARCHIVO_AUTOS, posicion);
             break;
         case 3:
-            cargarEnArregloAutos();
-            listarAutos(arregloAutos);
+            listarAutos();
             break;
         case 4:
             printf("Ingrese la Patente del auto que quiere ver: \n");
             patente = cargarPatente();
             coche = buscarAutoPatente(patente, &posicion);
-            mostrarAuto(&coche);
+            mostrarAuto(coche);
             break;
         case 5:
-            validosEnVenta = cargarArrAutosEnVenta(ARCHIVO_AUTOS, enVenta);
-            mostarAutosEnVenta(enVenta, validosEnVenta);
+            mostrarAutosEnVenta();
+            break;
+        case 6:
+            ordenarAutos(arregloAutosNuevos, cantidadNuevos);
+            mostrarAutosNuevos();
             break;
 
 

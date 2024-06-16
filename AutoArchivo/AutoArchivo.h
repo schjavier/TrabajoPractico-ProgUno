@@ -25,11 +25,7 @@ typedef struct {
 
 AutoArchivo cargarAutoArchivo(Auto);
 
-int contarAutoEnVenta(char*);
-AutoArchivo buscarAutoEnVenta(char*);
-int cargarArrAutosEnVenta(char*, AutoArchivo**);
-void mostarAutosEnVenta(AutoArchivo**, int validos);
-
+void mostrarArchivoAutos(char*);
 void mostrarAutoArchivo(AutoArchivo);
 
 void guardarAutoArchivo(AutoArchivo, char*);

@@ -10,6 +10,8 @@
 #include "../Utiles/Utiles.h"
 
 
+
+
 /**
     Implementación de la interface Auto
 
@@ -17,6 +19,12 @@
 
  Auto *arregloAutos;
  int cantidadAutos = -1;
+
+ Auto *arregloAutosEnVenta;
+ int cantidadEnVenta = -1;
+
+ Auto *arregloAutosNuevos;
+ int cantidadNuevos = -1;
 
 /**
     Funcion que carga el campo Marca de la estructura.
@@ -53,7 +61,6 @@ void cargarModelo(Auto *coche){
     Return: none
 **/
 
-
 void cargarAnio(Auto *coche){
 
     printf("Ingrese el a%co: ", 164);
@@ -63,7 +70,10 @@ void cargarAnio(Auto *coche){
 }
 /**
     Funcion que carga el nombre del titular del vehiculo.
+    Permite elegir si se quiere agregar la consecionaria, o alguna persona en especial.
+
     Param: Auto* coche -> puntero a una estructura tipo auto
+    Return: none
  **/
 
 
@@ -71,45 +81,63 @@ void cargarTitular(Auto *coche){
 
     char opcion;
     char dni[9];
-    Persona consecionaria = arreglopersona[0] ;
+    Persona consecionaria = arreglopersona[0];
     Persona aux;
+    int flag = 0;
 
-    printf("\n\tCargaremos los datos del titular\n");
-    printf("\tElija una de estas opciones:\n");
-    printf("R - Persona registrada\nN - Persona nueva\nC - Concesionaria\n");
-    fflush(stdin);
-    scanf("%c", &opcion);
+    if (cantidadpersonas <= 0){
 
-    letrasMayus(&opcion);
-
-    switch(opcion){
-    case 'R':
-        printf("Ingrese el DNI de la persona: ");
-        fflush(stdin);
-        gets(dni);
-        aux = buscarSegunDNI(dni);
-            if (strcmp(aux.dni, "0") == 0){
-                printf("la persona no se encuentra en el registro.");
-
-                }else {
-
-                    coche->titular = aux;
-
-                }
-
-
-        break;
-
-    case 'N':
-        agregarPersona();
-        coche->titular = arreglopersona[cantidadpersonas];
-        break;
-    case 'C':
+        printf("Parece que no hay personas cargadas en el sistema.\n");
+        printf("Por defecto, agregaremos a la consecionaria como titular!\n");
         coche->titular = consecionaria;
-        break;
+
+    } else {
+
+        while(flag == 0){
+                printf("flag: %d", flag);
+            printf("\n\tCargaremos los datos del titular\n");
+            printf("\tElija una de estas opciones:\n");
+            printf("R - Persona registrada\nN - Persona nueva\nC - Concesionaria\n");
+            fflush(stdin);
+            scanf("%c", &opcion);
+
+            letrasMayus(&opcion);
+
+            switch(opcion){
+            case 'R':
+                printf("Ingrese el DNI de la persona: ");
+                fflush(stdin);
+                gets(dni);
+                aux = buscarSegunDNI(dni);
+                    if (strcmp(aux.dni, "0") == 0){
+                        printf("la persona no se encuentra en el registro.");
+
+                        }else {
+                            verPersonaFull(aux);
+
+                            if(esVendedor(aux) == 1){
+                            coche->titular = aux;
+                            flag = 1;
+
+                            }
+                        }
+                break;
+
+        case 'N':
+            agregarPersona();
+                if (esVendedor(arreglopersona[cantidadpersonas]) == 1){
+                    coche->titular = arreglopersona[cantidadpersonas];
+
+                    flag = 1;
+                }
+            break;
+        case 'C':
+            coche->titular = consecionaria;
+            flag = 1;
+            break;
+        }
     }
-
-
+    }
 
 }
 
@@ -201,16 +229,16 @@ return coche;
     Return: none
 **/
 
-void mostrarAuto(Auto *coche){
+void mostrarAuto(Auto coche){
     printf(":::: DETALLES DEL AUTOMOTOR ::::\n");
 
-    printf(":: PATENTE: %s-%s::\n", coche->patente.letras, coche->patente.numeros);
-    printf(":: MARCA: %s::\n", coche->marca);
-    printf(":: MODELO: %s::\n", coche->modelo);
-    printf(":: A%cO: %d::\n", 165, coche->anio);
-    printf(":: KILOMETRAJE: %d kms::\n", coche->kms);
-    printf(":: NOMBRE DEL TITULAR: %s::\n", coche->titular.nombre);
-    printf(":: PRECIO DE ADQUISICION: %.2f::\n", coche->precioDeAdquisicion);
+    printf(":: PATENTE: %s-%s::\n", coche.patente.letras, coche.patente.numeros);
+    printf(":: MARCA: %s::\n", coche.marca);
+    printf(":: MODELO: %s::\n", coche.modelo);
+    printf(":: A%cO: %d::\n", 165, coche.anio);
+    printf(":: KILOMETRAJE: %d kms::\n", coche.kms);
+    printf(":: NOMBRE DEL TITULAR: %s::\n", coche.titular.nombre);
+    printf(":: PRECIO DE ADQUISICION: %.2f::\n", coche.precioDeAdquisicion);
 
 }
 
@@ -237,6 +265,7 @@ void designarEspacioAuto(Auto **arr){
 void cargarAutoArreglo(Auto coche){
 
     designarEspacioAuto(&arregloAutos);
+
     arregloAutos[cantidadAutos] = coche;
 
 }
@@ -249,16 +278,18 @@ void cargarAutoArreglo(Auto coche){
 
 **/
 
-void cargarEnArregloAutos(){
+void cargarEnArregloAutosInit(){
 cantidadAutos = -1;
 
  if(existeArchivo(ARCHIVO_AUTOS) == 1)
     {
         FILE *archivo = fopen(ARCHIVO_AUTOS,"rb");
-        Auto coche;
-        while(fread(&coche,sizeof(Auto),1,archivo)>0)
+        AutoArchivo coche;
+        Auto aux;
+        while(fread(&coche,sizeof(AutoArchivo),1,archivo) > 0)
         {
-            cargarAutoArreglo(coche);
+            aux = convertirAuto(coche);
+            cargarAutoArreglo(aux);
         }
         fclose(archivo);
     }
@@ -279,9 +310,9 @@ cantidadAutos = -1;
 
 void listarAutos(){
 
-    for (int i = 0; i < cantidadAutos; i++){
-        printf("..:: Listado de Autos ::..");
-        printf("Marca: %s - Modelo: %s - Patente: %s-%s\n" , arregloAutos[i].marca, arregloAutos[i].modelo, arregloAutos[i].patente.letras, arregloAutos[i].patente.numeros);
+    for (int i = 0; i <= cantidadAutos; i++){
+        printf("..:: Listado de Autos ::..\n");
+        printf("%d - Marca: %s - Modelo: %s - Patente: %s-%s\n" ,i+1, arregloAutos[i].marca, arregloAutos[i].modelo, arregloAutos[i].patente.letras, arregloAutos[i].patente.numeros);
 
     }
 
@@ -298,17 +329,26 @@ void listarAutos(){
 **/
 
 Auto buscarAutoPatente(Patente patente, int *pos){
-    cargarEnArregloAutos();
+
     int i = 0;
+    int flag = 0;
     Auto coche;
-    while (i < cantidadAutos){
-        if (strcmp (arregloAutos[i].patente.letras, patente.letras) == 0 && strcmp(arregloAutos[i].patente.numeros, patente.numeros)==0){
+
+    while (flag == 0 && i <= cantidadAutos){
+        if (strcmp(arregloAutos[i].patente.letras, patente.letras) == 0 && strcmp(arregloAutos[i].patente.numeros, patente.numeros) == 0){
+
             coche = arregloAutos[i];
             (*pos) = i;
+            flag = 1;
+        } else {
+
+            i++;
         }
 
 
+
     }
+
 return coche;
 
 }
@@ -317,6 +357,8 @@ return coche;
 /**
 
     Funcion que permite modificar un auto.
+    Params: Auto autoModificar -> el auto a modificar
+    Return: Auto -> el auto modificado
 
 **/
 
@@ -362,3 +404,234 @@ Auto modificarAuto(Auto autoAModificar){
     return autoAModificar;
 }
 
+/**
+    Fucnion que muestra el arreglo de autos.
+    Params: none
+    Return: none
+ **/
+
+void mostarArrAutos(){
+ for (int i = 0;i <= cantidadAutos; i++){
+    mostrarAuto(arregloAutos[i]);
+
+ }
+
+}
+
+/**
+    Funcion que convierte una estructura tipo AutoArchivo en una estructura tipo Auto
+    Params: AutoArchivo coche -> el auto a convertir
+    Return: Auto -> el auto pasado como parametro convertido.
+**/
+
+Auto convertirAuto(AutoArchivo coche){
+    Auto aux;
+
+    strcpy (aux.patente.letras, coche.patente.letras);
+    strcpy (aux.patente.numeros, coche.patente.numeros);
+    strcpy (aux.marca, coche.marca);
+    strcpy (aux.modelo, coche.modelo);
+    aux.anio = coche.anio;
+    aux.kms = coche.kms;
+    aux.titular = buscarTitular(coche.dniTitular);
+    aux.precioDeAdquisicion = coche.precioDeAdquisicion;
+
+    return aux;
+
+}
+/**
+    Funcion que busca una persona por dni.
+    Prarams: char dni[] -> que representa el dni del titular a buscar.
+    Return: Persona titular -> la persona que se corresponde al dni pasado como argumento.
+
+**/
+Persona buscarTitular(char dni[]){
+    Persona titular;
+
+    int i =0;
+    int resultado;
+
+    while( i <= cantidadpersonas ){
+        titular = arreglopersona[i];
+
+        resultado = strcmp(titular.dni, dni);
+
+        i++;
+}
+
+return titular;
+}
+
+/**-----------------------------------------Punto 5---------------------------------------------------------------**/
+
+/**
+    Funcion que determina si un auto esta a la venta basandose en el dni del titular, ya que la consecionaria tiene un dni
+    especial.
+
+    Params: char* nombreArchivo -> Recibe un puntero a char que representa el nombre del archivo.
+    return: devuelve una estructura AutoArchivo que este en venta.
+**/
+
+int enVenta(Auto coche){
+    int flag = 0;
+
+
+    if(strcmp(coche.titular.dni, "00000000") == 0){
+        flag = 1;
+    }
+
+return flag;
+
+
+}
+
+/**
+    Funcion que reasigna espacio para el arreglo dinamico de autos en venta.
+    Params: Auto **arr -> un puntero doble de tipo Auto al arreglo.
+    return: none
+**/
+
+void designarEspacioAutoVenta(Auto **arr){
+    cantidadEnVenta++;
+    *arr = realloc(*arr, sizeof(Auto) * (cantidadEnVenta+1));
+
+}
+
+/**
+    Funcion que carga un auto en el arreglo dinamico de autos en venta.
+    Params: Auto coche -> el auto a agregar
+    Return: none
+
+ **/
+
+void cargarAutoEnVentaEnArreglo(Auto coche){
+
+    designarEspacioAutoVenta(&arregloAutosEnVenta);
+    arregloAutosEnVenta[cantidadEnVenta] = coche;
+
+}
+
+/**
+    Funcion qur carga el arreglo de autos en venta a partir del arreglo de autos.
+    Params: none
+    Return: none
+
+ **/
+
+void cargarArregloAutosEnVentaInit(){
+    cantidadEnVenta = -1;
+    int resultado = 0;
+    int i = 0;
+    while (i <= cantidadAutos){
+        resultado = enVenta(arregloAutos[i]);
+        if (resultado == 1){
+        cargarAutoEnVentaEnArreglo(arregloAutos[i]);
+
+        }
+        i++;
+
+    }
+
+}
+
+/**
+    Funcion que recorre el arreglo de autos en venta mostrando sus elementos.
+    Params: none
+    Return: none
+
+**/
+
+void mostrarAutosEnVenta(){
+
+    for (int i = 0; i <= cantidadEnVenta; i++){
+
+        mostrarAuto(arregloAutosEnVenta[i]);
+
+    }
+
+}
+/**----------------------------------------Ordenacion de los autos menores a 10 años---------------------------------------------------**/
+
+/** Funcion que chequea si el auto es nuevo  **/
+
+int esNuevo(Auto coche){
+
+    int flag = 0;
+    int limite = 2014;
+
+    if (coche.anio >= limite){
+       flag = 1;
+    }
+    return flag;
+}
+
+int encontrarMenor(Auto arr[], int pos, int validos){
+    int posMenor = pos;
+    Auto aux = arr[pos];
+    int i = posMenor + 1;
+
+    while (i < validos){
+
+        if (arr[i].anio < aux.anio){
+
+            aux = arr[i];
+            posMenor = i;
+        }
+        i++;
+    }
+
+return posMenor;
+
+}
+
+void ordenarAutos(Auto arr[], int validos){
+    int i = 0;
+    int posMenor;
+    Auto aux;
+
+    while(i < validos){
+        posMenor = encontrarMenor(arr, i, validos);
+        aux = arr[posMenor];
+        arr[posMenor] = arr[i];
+        arr[i] = aux;
+        i++;
+    }
+}
+
+void designarEspacioAutoNuevos(Auto **arr){
+    cantidadNuevos++;
+    *arr = realloc(*arr, sizeof(Auto) * (cantidadNuevos+1));
+}
+
+void cargarAutoNuevoEnArreglo(Auto coche){
+
+    designarEspacioAutoNuevos(&arregloAutosNuevos);
+    arregloAutosNuevos[cantidadNuevos] = coche;
+
+}
+
+void cargarArregloAutosNuevosInit(){
+    cantidadNuevos = -1;
+    int resultado = 0;
+    int i = 0;
+    while (i <= cantidadAutos){
+        resultado = esNuevo(arregloAutos[i]);
+        if (resultado == 1){
+
+            cargarAutoNuevoEnArreglo(arregloAutos[i]);
+
+
+        }
+        i++;
+
+    }
+
+}
+
+void mostrarAutosNuevos(){
+
+    for (int i = 0; i <= cantidadNuevos; i++){
+        mostrarAuto(arregloAutosNuevos[i]);
+    }
+
+}

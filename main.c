@@ -13,9 +13,18 @@
 int main()
 {
 
-menuCargaPersonas();
+cargarEnArregloPersonasInit();
+////mostrarArchivoAutos(ARCHIVO_AUTOS);
+cargarEnArregloAutosInit();
+cargarArregloAutosEnVentaInit();
+cargarArregloAutosNuevosInit();
 
+//mostrarAutosNuevos();
+
+menuCargaPersonas();
 autoMenu();
+
+
 
 
 //    Usuario user;

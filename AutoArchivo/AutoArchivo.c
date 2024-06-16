@@ -5,6 +5,8 @@
 
 #include "AutoArchivo.h"
 #include "../Patente/Patente.h"
+#include "../Auto/Auto.h"
+#include "../Persona/Persona.h"
 
 /**
     Implementacion de la interface AutoArchivo
@@ -47,127 +49,11 @@ printf("-----------------------------------------\n");
 printf("Patente: %s-%s\n", coche.patente.letras, coche.patente.numeros);
 printf("Marca : %s\n", coche.marca);
 printf("Modelo : %s\n", coche.modelo);
-printf("A%co : %s\n",164, coche.modelo);
+printf("A%co : %d\n",164, coche.anio);
 printf("-----------------------------------------\n");
 }
 
-/**
-    Funcion que busca en el archivo los autos que se encuantran en venta
-    Params: char* nombreArchivo -> Recibe un puntero a char que representa el nombre del archivo.
-    return: devuelve una estructura AutoArchivo que este en venta.
-**/
 
-AutoArchivo buscarAutoEnVenta(char* nombreArchivo){
-    FILE *archivo = fopen(nombreArchivo, "rb");
-
-    AutoArchivo aux;
-    AutoArchivo enVenta;
-
-    if (archivo != NULL){
-
-        while(fread(&aux, sizeof(AutoArchivo), 1, archivo)>0){
-
-            if((strcmp(aux.dniTitular, "00000000\0") == 0)){
-                enVenta = aux;
-            }
-
-        }
-
-    } else {
-
-    printf("Error leyendo el archivo");
-
-    }
-
-return enVenta;
-
-
-}
-
-/**
-    Funcion que cuenta la cantidad de autos que estan en venta.
-    args: un puntero a char que representa el nombre del archivo.
-    return: devuelve un entrero que representa la cantidad de autos en venta.
-**/
-
-int contarAutoEnVenta(char *nombreArchivo){
-
-FILE *archivo = fopen(nombreArchivo, "rb");
-
-    int contador;
-    AutoArchivo aux;
-
-    if (archivo != NULL){
-
-        while(fread(&aux, sizeof(AutoArchivo), 1, archivo)> 0){
-            if (strcmp(aux.dniTitular, "00000000\0") == 0){
-                contador++;
-            }
-        }
-
-    } else {
-
-        printf("Problemas leyendo el archivo");
-
-}
-fclose(archivo);
-return contador;
-
-}
-
-/**
-    Funcion que carga el arreglo dinamico de autos en venta.
-    Params: char *nombreArchivo -> puntero al nombre del archivo.
-            AutoArchivo **autosEnVenta -> puntero doble de tpo AutoArchivo
-    Return: int i -> la posicion del final del arreglo
-
-**/
-
-int cargarArrAutosEnVenta(char *nombreArchivo, AutoArchivo **autosEnVenta){
-    FILE *archivo = (fopen(nombreArchivo, "rb"));
-
-    int i = 0;
-    int cantidad = contarAutoEnVenta(nombreArchivo);
-    AutoArchivo enVenta;
-
-
-    *autosEnVenta = (AutoArchivo*) malloc(sizeof(AutoArchivo) * cantidad);
-
-    if (archivo != NULL){
-        while (fread(&enVenta, sizeof(AutoArchivo), 1, archivo)> 0){
-                (*autosEnVenta)[i] = enVenta;
-                i++;
-        }
-
-
-    }else {
-
-    printf("Tuvimos problemas abriendo el archivo");
-
-    }
-return i;
-}
-
-/**
-
-    Funcion que muestra todos los autos en venta, o sea a nombre de la concesionaria
-    Params: AutoArchivo** autosEnVenta -> un puntero doble a un arreglo de tipo AutoArchivo
-            int validos -> la cantidad de entradas validas del arreglo
-
-**/
-
-void mostarAutosEnVenta(AutoArchivo** autosEnVenta, int validos){
-
-
-    for (int i =0; i< validos; i++){
-
-        mostrarAutoArchivo((*autosEnVenta)[i]);
-
-
-    }
-
-
-}
 
 
 
@@ -205,20 +91,52 @@ Params: AutoArchivo coche -> el coche a guardar
 **/
 
 void guardarAutoArchivoEnPos(AutoArchivo coche, char *nombreArchivo, int pos){
-    FILE* archivo = fopen(nombreArchivo, "ab");
+    FILE* archivo = fopen(nombreArchivo, "r+b");
+    Auto aux;
 
-    int posicion = pos-1;
+    printf("%d", pos);
 
     if (archivo != NULL){
-        fseek( archivo, sizeof(AutoArchivo)*posicion, SEEK_SET);
+        fseek( archivo, sizeof(AutoArchivo)*pos, SEEK_SET);
         fwrite(&coche, sizeof(AutoArchivo), 1, archivo);
-
+        aux = convertirAuto(coche);
+        arregloAutos[pos] = aux;
     } else {
 
     printf("problemas abriendo el archivo");
 
     }
 
+fclose(archivo);
+
+}
+
+/**
+
+    Funcion que muestra el contenido del archivo.
+    Params: char *nombreArchivo
+    return: none
+
+**/
+
+void mostrarArchivoAutos(char *nombreArchivo){
+
+FILE *archivo = fopen(nombreArchivo, "rb");
+
+AutoArchivo coche;
+
+if(archivo !=NULL){
+
+        while (fread(&coche, sizeof(AutoArchivo), 1, archivo) > 0){
+
+            mostrarAutoArchivo(coche);
+
+        }
+
+} else {
+    printf("problemas con el archivo");
+
+}
 fclose(archivo);
 
 }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1718028430 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
+1718502686 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
 	<stdio.h>
 	<stdlib.h>
 	"AutoArchivo/AutoArchivo.h"
@@ -47,14 +47,14 @@
 	<stdlib.h>
 	"Auto.h"
 
-1716468153 source:c:\users\schja\documents\utn\programacioni\trabajopractico\patente\patente.c
+1718420069 source:c:\users\schja\documents\utn\programacioni\trabajopractico\patente\patente.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"Patente.h"
 
-1716160826 c:\users\schja\documents\utn\programacioni\trabajopractico\patente\patente.h
+1718286560 c:\users\schja\documents\utn\programacioni\trabajopractico\patente\patente.h
 
 1717957093 source:c:\users\schja\documents\utn\programacioni\trabajopractico\persona\persona.c
 	"persona.h"
@@ -67,7 +67,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1718029771 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.c
+1718503401 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -77,19 +77,22 @@
 	"../Persona/Persona.h"
 	"../Utiles/Utiles.h"
 
-1718029771 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.h
+1718424278 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.h
 	"../Persona/Persona.h"
 	"../Patente/Patente.h"
+	"../AutoArchivo/AutoArchivo.h"
 
-1718028751 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.c
+1718409215 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"AutoArchivo.h"
 	"../Patente/Patente.h"
+	"../Auto/Auto.h"
+	"../Persona/Persona.h"
 
-1717974100 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.h
+1718289573 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.h
 	"../Patente/Patente.h"
 	"../Auto/Auto.h"
 	"../Persona/Persona.h"
@@ -124,12 +127,13 @@
 
 1717954075 c:\users\schja\documents\utn\programacioni\trabajopractico\utiles\utiles.h
 
-1717592546 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.c
+1718502620 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.c
 	"AutoValidaciones.h"
+	"../Persona/Persona.h"
 
-1717592546 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.h
+1718502605 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.h
 
-1718029554 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\automenu.c
+1718422098 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\automenu.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
