@@ -2,6 +2,11 @@
 #define AUTOARCHIVO_H_INCLUDED
 
 #include "../Patente/Patente.h"
+#include "../Auto/Auto.h"
+#include "../Persona/Persona.h"
+
+/** Constante con el nombre de archivo, para persistir los usuarios **/
+#define ARCHIVO_AUTOS "AutoArchivo.bin"
 
 /**
     Definicion de tipo.
@@ -12,14 +17,19 @@ typedef struct {
     char modelo[15];
     int anio;
     int kms;
-    int dniTitular;
+    char dniTitular[9];
     float precioDeAdquisicion;
 } AutoArchivo;
 
 
-AutoArchivo cargarAutoArchivo();
 
+AutoArchivo cargarAutoArchivo(Auto);
+
+void mostrarArchivoAutos(char*);
 void mostrarAutoArchivo(AutoArchivo);
+
+void guardarAutoArchivo(AutoArchivo, char*);
+void guardarAutoArchivoEnPos(AutoArchivo, char*, int);
 
 
 #endif // AUTOARCHIVO_H_INCLUDED

@@ -5,39 +5,32 @@
 
 #include "AutoArchivo.h"
 #include "../Patente/Patente.h"
+#include "../Auto/Auto.h"
+#include "../Persona/Persona.h"
 
 /**
     Implementacion de la interface AutoArchivo
 **/
 
 
+
 /**
     Función que carga una estructura tipo AutoArchivo.
-    Args: none
+    Params: Auto autoAcargar -> recibe una estructura tipo Auto
     Return: AutoArchivo
 **/
 
-AutoArchivo cargarAutoArchivo(){
+AutoArchivo cargarAutoArchivo(Auto autoACargar){
 
 AutoArchivo coche;
 
-printf("Ingrese los datos del auto: \n");
-
-coche.patente = cargarPatente();
-printf("Marca: ");
-fflush(stdin);
-gets(coche.marca);
-printf("Modelo: ");
-fflush(stdin);
-gets(coche.modelo);
-printf("A%co: ", 164);
-scanf("%d", &coche.anio);
-printf("Kilometraje: ");
-scanf("%d", &coche.kms);
-printf("DNI titular: ");
-scanf("%d", &coche.dniTitular);
-printf("Precio de adquisici%cn: ", 162);
-scanf("%f", &coche.precioDeAdquisicion);
+coche.patente = autoACargar.patente;
+strcpy (coche.marca, autoACargar.marca);
+strcpy (coche.modelo, autoACargar.modelo);
+coche.anio = autoACargar.anio;
+coche.kms = autoACargar.kms;
+strcpy (coche.dniTitular, autoACargar.titular.dni);
+coche.precioDeAdquisicion = autoACargar.precioDeAdquisicion;
 
 return coche;
 
@@ -56,10 +49,94 @@ printf("-----------------------------------------\n");
 printf("Patente: %s-%s\n", coche.patente.letras, coche.patente.numeros);
 printf("Marca : %s\n", coche.marca);
 printf("Modelo : %s\n", coche.modelo);
-printf("A%co : %d\n",164, coche.modelo);
-printf("Kilometraje : %d\n", coche.kms);
-printf("DNI del titular : %d\n", coche.dniTitular);
-printf("Precio de Adquisici%cn : %.2f\n", 162, coche.precioDeAdquisicion);
+printf("A%co : %d\n",164, coche.anio);
 printf("-----------------------------------------\n");
 }
 
+
+
+
+
+/**
+    Funcion que guarda los datos de un auto en formato AutoArchivo
+    param: AutoArchivo coche -> el auto a guardar,
+           char* nombreArchivo -> puntero al nombre del archivo.
+
+**/
+
+void guardarAutoArchivo(AutoArchivo coche, char *nombreArchivo){
+FILE *archivo = fopen(nombreArchivo, "ab");
+
+if (archivo !=NULL){
+
+    fwrite(&coche, sizeof(AutoArchivo), 1, archivo);
+
+} else {
+
+    printf("Tuvimos problemas abriendo el archivo");
+
+}
+
+fclose(archivo);
+
+}
+
+/**
+
+Funcion que guarda un AutoArchivo en la posicion indicada
+Params: AutoArchivo coche -> el coche a guardar
+        char *nombreArchivo -> puntero al archivo donde guardar
+        int pos -> las posicion donde guardar el auto
+
+**/
+
+void guardarAutoArchivoEnPos(AutoArchivo coche, char *nombreArchivo, int pos){
+    FILE* archivo = fopen(nombreArchivo, "r+b");
+    Auto aux;
+
+    printf("%d", pos);
+
+    if (archivo != NULL){
+        fseek( archivo, sizeof(AutoArchivo)*pos, SEEK_SET);
+        fwrite(&coche, sizeof(AutoArchivo), 1, archivo);
+        aux = convertirAuto(coche);
+        arregloAutos[pos] = aux;
+    } else {
+
+    printf("problemas abriendo el archivo");
+
+    }
+
+fclose(archivo);
+
+}
+
+/**
+
+    Funcion que muestra el contenido del archivo.
+    Params: char *nombreArchivo
+    return: none
+
+**/
+
+void mostrarArchivoAutos(char *nombreArchivo){
+
+FILE *archivo = fopen(nombreArchivo, "rb");
+
+AutoArchivo coche;
+
+if(archivo !=NULL){
+
+        while (fread(&coche, sizeof(AutoArchivo), 1, archivo) > 0){
+
+            mostrarAutoArchivo(coche);
+
+        }
+
+} else {
+    printf("problemas con el archivo");
+
+}
+fclose(archivo);
+
+}

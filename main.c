@@ -5,20 +5,30 @@
 #include "AutoArchivo/AutoArchivo.h"
 #include "Auto/Auto.h"
 #include "Usuario/Usuario.h"
+#include "Persona/Persona.h"
+#include "Utiles/Utiles.h"
+#include "Auto/AutoMenu.h"
 
 
 int main()
 {
-//    AutoArchivo coche;
-//    coche = cargarAutoArchivo();
-//    mostrarAutoArchivo(coche);
-//
-//    Auto coche;
-//    coche = cargarAuto();
-//    mostrarAuto(&coche);
 
-    Usuario user;
-    crearUsuario(&user);
+cargarEnArregloPersonasInit();
+////mostrarArchivoAutos(ARCHIVO_AUTOS);
+cargarEnArregloAutosInit();
+cargarArregloAutosEnVentaInit();
+cargarArregloAutosNuevosInit();
+
+//mostrarAutosNuevos();
+
+menuCargaPersonas();
+autoMenu();
+
+
+
+
+//    Usuario user;
+//    crearUsuario(&user);
 
 
 

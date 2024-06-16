@@ -3,6 +3,7 @@
 
 int existeArchivo(char*);
 void crearArchivo(char*);
+void verArchivoPersonas(char*);
 
 
 #endif // UTILES_H_INCLUDED

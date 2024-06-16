@@ -12,4 +12,8 @@ Patente cargarPatente();
 
 void letrasMayus(char[]);
 
+//agregar validacion patente no puede estar duplicada
+// letras no pueden ser numeros
+//numero no pueden ser letras
+
 #endif // PATENTE_H_INCLUDED
