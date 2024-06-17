@@ -1,0 +1,136 @@
+# depslib dependency file v1.0
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\auto\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Auto.h"
+	"AutoValidaciones.h"
+	"../AutoArchivo/AutoArchivo.h"
+	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\auto\auto.h
+	"../Persona/Persona.h"
+	"../Patente/Patente.h"
+	"../AutoArchivo/AutoArchivo.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\persona\persona.h
+	<stdio.h>
+	<stdlib.h>
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\patente\patente.h
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\autoarchivo\autoarchivo.h
+	"../Patente/Patente.h"
+	"../Auto/Auto.h"
+	"../Persona/Persona.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\auto\autovalidaciones.h
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\utiles\utiles.h
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\auto\automenu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Auto.h"
+	"AutoValidaciones.h"
+	"AutoMenu.h"
+	"../AutoArchivo/AutoArchivo.h"
+	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\auto\automenu.h
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\auto\autovalidaciones.c
+	"AutoValidaciones.h"
+	"../Persona/Persona.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\autoarchivo\autoarchivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"AutoArchivo.h"
+	"../Patente/Patente.h"
+	"../Auto/Auto.h"
+	"../Persona/Persona.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\patente\patente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Patente.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\persona\persona.c
+	"persona.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\usuario\usuario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Usuario.h"
+	"UsuarioValidaciones.h"
+	"../Utiles/Utiles.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\usuario\usuario.h
+
+1718504902 c:\users\tixia\onedrive\escritorio\rama ventas\usuario\usuariovalidaciones.h
+	"Usuario.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\usuario\usuariovalidaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"../Utiles/Utiles.h"
+	"UsuarioValidaciones.h"
+	"Usuario.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\rama ventas\utiles\utiles.c
+	<stdio.h>
+	<stdlib.h>
+	"Utiles.h"
+	"../Persona/Persona.h"
+
+1718665021 source:c:\users\tixia\onedrive\escritorio\rama ventas\ventas\venta.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
+	"VentaValidaciones.h"
+
+1718660340 c:\users\tixia\onedrive\escritorio\rama ventas\ventas\venta.h
+	<stdio.h>
+	<stdlib.h>
+	"../Patente/Patente.h"
+
+1718664902 c:\users\tixia\onedrive\escritorio\rama ventas\ventas\ventavalidaciones.h
+	<stdio.h>
+	<stdlib.h>
+	"../Patente/Patente.h"
+
+1718664902 source:c:\users\tixia\onedrive\escritorio\rama ventas\ventas\ventavalidaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
+	"VentaValidaciones.h"
+	"../Persona/Persona.h"
+
+1718665601 source:c:\users\tixia\onedrive\escritorio\rama ventas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"AutoArchivo/AutoArchivo.h"
+	"Auto/Auto.h"
+	"Usuario/Usuario.h"
+	"Persona/Persona.h"
+	"Utiles/Utiles.h"
+	"Auto/AutoMenu.h"
+	"Ventas/Venta.h"
+

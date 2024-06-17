@@ -1,0 +1,281 @@
+# depslib dependency file v1.0
+1718502686 source:c:\users\schja\documents\utn\programacioni\trabajopractico\main.c
+	<stdio.h>
+	<stdlib.h>
+	"AutoArchivo/AutoArchivo.h"
+	"Auto/Auto.h"
+	"Usuario/Usuario.h"
+	"Persona/Persona.h"
+	"Utiles/Utiles.h"
+	"Auto/AutoMenu.h"
+
+1716160826 c:\users\schja\documents\utn\programacioni\trabajopractico\patente.h
+
+1716457227 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.h
+	"Patente.h"
+
+1716457918 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"AutoArchivo.h"
+	"Patente.h"
+
+1716160763 source:c:\users\schja\documents\utn\programacioni\trabajopractico\patente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Patente.h"
+
+1716458686 source:c:\users\schja\documents\utn\programacioni\trabajopractico\persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"persona.h"
+
+1716380604 c:\users\schja\documents\utn\programacioni\trabajopractico\persona.h
+
+1716458729 c:\users\schja\documents\utn\programacioni\trabajopractico\auto.h
+	"Persona.h"
+	"Patente.h"
+
+1716460644 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto.c
+	<stdio.h>
+	<stdlib.h>
+	"Auto.h"
+
+1718420069 source:c:\users\schja\documents\utn\programacioni\trabajopractico\patente\patente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Patente.h"
+
+1718286560 c:\users\schja\documents\utn\programacioni\trabajopractico\patente\patente.h
+
+1717957093 source:c:\users\schja\documents\utn\programacioni\trabajopractico\persona\persona.c
+	"persona.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1717954075 c:\users\schja\documents\utn\programacioni\trabajopractico\persona\persona.h
+	<stdio.h>
+	<stdlib.h>
+
+1718503401 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Auto.h"
+	"AutoValidaciones.h"
+	"../AutoArchivo/AutoArchivo.h"
+	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
+
+1718424278 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\auto.h
+	"../Persona/Persona.h"
+	"../Patente/Patente.h"
+	"../AutoArchivo/AutoArchivo.h"
+
+1718409215 source:c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"AutoArchivo.h"
+	"../Patente/Patente.h"
+	"../Auto/Auto.h"
+	"../Persona/Persona.h"
+
+1718289573 c:\users\schja\documents\utn\programacioni\trabajopractico\autoarchivo\autoarchivo.h
+	"../Patente/Patente.h"
+	"../Auto/Auto.h"
+	"../Persona/Persona.h"
+
+1717592546 c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.h
+
+1717592546 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Usuario.h"
+	"UsuarioValidaciones.h"
+	"../Utiles/Utiles.h"
+
+1717592546 source:c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuariovalidaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"../Utiles/Utiles.h"
+	"UsuarioValidaciones.h"
+	"Usuario.h"
+
+1717592546 c:\users\schja\documents\utn\programacioni\trabajopractico\usuario\usuariovalidaciones.h
+	"Usuario.h"
+
+1717954075 source:c:\users\schja\documents\utn\programacioni\trabajopractico\utiles\utiles.c
+	<stdio.h>
+	<stdlib.h>
+	"Utiles.h"
+	"../Persona/Persona.h"
+
+1717954075 c:\users\schja\documents\utn\programacioni\trabajopractico\utiles\utiles.h
+
+1718502620 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.c
+	"AutoValidaciones.h"
+	"../Persona/Persona.h"
+
+1718502605 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\autovalidaciones.h
+
+1718422098 source:c:\users\schja\documents\utn\programacioni\trabajopractico\auto\automenu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Auto.h"
+	"AutoValidaciones.h"
+	"AutoMenu.h"
+	"../AutoArchivo/AutoArchivo.h"
+	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
+
+1718028282 c:\users\schja\documents\utn\programacioni\trabajopractico\auto\automenu.h
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\auto\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Auto.h"
+	"AutoValidaciones.h"
+	"../AutoArchivo/AutoArchivo.h"
+	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\auto\auto.h
+	"../Persona/Persona.h"
+	"../Patente/Patente.h"
+	"../AutoArchivo/AutoArchivo.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\persona\persona.h
+	<stdio.h>
+	<stdlib.h>
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\patente\patente.h
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\autoarchivo\autoarchivo.h
+	"../Patente/Patente.h"
+	"../Auto/Auto.h"
+	"../Persona/Persona.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\auto\autovalidaciones.h
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\utiles\utiles.h
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\auto\automenu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Auto.h"
+	"AutoValidaciones.h"
+	"AutoMenu.h"
+	"../AutoArchivo/AutoArchivo.h"
+	"../Persona/Persona.h"
+	"../Utiles/Utiles.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\auto\automenu.h
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\auto\autovalidaciones.c
+	"AutoValidaciones.h"
+	"../Persona/Persona.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\autoarchivo\autoarchivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"AutoArchivo.h"
+	"../Patente/Patente.h"
+	"../Auto/Auto.h"
+	"../Persona/Persona.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	"AutoArchivo/AutoArchivo.h"
+	"Auto/Auto.h"
+	"Usuario/Usuario.h"
+	"Persona/Persona.h"
+	"Utiles/Utiles.h"
+	"Auto/AutoMenu.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\usuario\usuario.h
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\patente\patente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Patente.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\persona\persona.c
+	"persona.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\usuario\usuario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Usuario.h"
+	"UsuarioValidaciones.h"
+	"../Utiles/Utiles.h"
+
+1718504902 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\usuario\usuariovalidaciones.h
+	"Usuario.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\usuario\usuariovalidaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"../Utiles/Utiles.h"
+	"UsuarioValidaciones.h"
+	"Usuario.h"
+
+1718504902 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\utiles\utiles.c
+	<stdio.h>
+	<stdlib.h>
+	"Utiles.h"
+	"../Persona/Persona.h"
+
+1718497802 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\ventas\ventavalidaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
+	"VentaValidaciones.h"
+
+1718505111 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\ventas\venta.h
+	<stdio.h>
+	<stdlib.h>
+	"../Patente/Patente.h"
+
+1718497344 c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\ventas\ventavalidaciones.h
+	<stdio.h>
+	<stdlib.h>
+	"../Patente/Patente.h"
+
+1718647493 source:c:\users\tixia\onedrive\escritorio\trabajopractico-proguno-main\ventas\venta.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
+	"VentaValidaciones.h"
+

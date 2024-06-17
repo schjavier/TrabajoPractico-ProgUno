@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TrabajoPractico" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/TrabajoPractico" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/TrabajoPractico" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="AutoArchivo/AutoArchivo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="AutoArchivo/AutoArchivo.h" />
+		<Unit filename="Auto/Auto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Auto/Auto.h" />
+		<Unit filename="Auto/AutoMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Auto/AutoMenu.h" />
+		<Unit filename="Auto/AutoValidaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Auto/AutoValidaciones.h" />
+		<Unit filename="Patente/Patente.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Patente/Patente.h" />
+		<Unit filename="Persona/Persona.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Persona/Persona.h" />
+		<Unit filename="README.md" />
+		<Unit filename="Usuario/Usuario.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Usuario/Usuario.h" />
+		<Unit filename="Usuario/UsuarioValidaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Usuario/UsuarioValidaciones.h" />
+		<Unit filename="Utiles/Utiles.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Utiles/Utiles.h" />
+		<Unit filename="Ventas/Venta.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Ventas/Venta.h" />
+		<Unit filename="Ventas/VentaValidaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Ventas/VentaValidaciones.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
