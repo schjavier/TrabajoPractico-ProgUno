@@ -28,7 +28,7 @@ coche.patente = autoACargar.patente;
 strcpy (coche.marca, autoACargar.marca);
 strcpy (coche.modelo, autoACargar.modelo);
 coche.anio = autoACargar.anio;
-coche.kms = autoACargar.kms;
+strcpy (coche.kms, autoACargar.kms);
 strcpy (coche.dniTitular, autoACargar.titular.dni);
 coche.precioDeAdquisicion = autoACargar.precioDeAdquisicion;
 

@@ -16,7 +16,7 @@ typedef struct {
     char marca[15];
     char modelo[15];
     int anio;
-    int kms;
+    char kms[8];
     char dniTitular[9];
     float precioDeAdquisicion;
 } AutoArchivo;
