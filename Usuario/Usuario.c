@@ -83,9 +83,9 @@ void guardarUsuario(char *nombreArchivo, Usuario *usuario){
     if (archivo != NULL) {
 
 
-            printf("Guardando...");
+            printf("Guardando...\n");
             fwrite(usuario, sizeof(Usuario), 1, archivo);
-            printf("OK!");
+            printf("OK!\n");
 
 
     }else {
@@ -104,6 +104,27 @@ int autenticar(char *nombreArchivo, char *nombreUsuario, char *contrasenia){
     if (archivo !=  NULL){
         while (fread(&usuario, sizeof(Usuario), 1, archivo) > 0){
             if ( strcmpi(usuario.nombreUsuario, nombreUsuario) == 0 && strcmpi (usuario.contrasenia, contrasenia) == 0){
+               autenticado = 1;
+            }
+        }
+
+    } else {
+        printf("Tuvimos problemas para abrir el archivo.\n");
+    }
+
+    fclose(archivo);
+    return autenticado;
+
+}
+
+int autPin(char *nombreArchivo, char *pin){
+    FILE *archivo = fopen(nombreArchivo, "rb");
+    Usuario usuario;
+    int autenticado = 0;
+
+    if (archivo !=  NULL){
+        while (fread(&usuario, sizeof(Usuario), 1, archivo) > 0){
+            if ( strcmpi(usuario.pin, pin) == 0){
                autenticado = 1;
             }
         }

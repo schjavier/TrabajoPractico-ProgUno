@@ -1,0 +1,6 @@
+#ifndef LOGINMENU_H_INCLUDED
+#define LOGINMENU_H_INCLUDED
+
+void menuLogin();
+
+#endif // LOGINMENU_H_INCLUDED
