@@ -13,17 +13,29 @@
 int main()
 {
 
-cargarEnArregloPersonasInit();
-////mostrarArchivoAutos(ARCHIVO_AUTOS);
-cargarEnArregloAutosInit();
-cargarArregloAutosEnVentaInit();
-cargarArregloAutosNuevosInit();
+//cargarEnArregloPersonasInit();
+//////mostrarArchivoAutos(ARCHIVO_AUTOS);
+//cargarEnArregloAutosInit();
+//cargarArregloAutosEnVentaInit();
+//cargarArregloAutosNuevosInit();
+//
+////mostrarAutosNuevos();
+//
+//menuCargaPersonas();
+//autoMenu();
+//
+//
+Auto coche;
+ int i = 0;
+int validado = 0;
+char *cadena;
+//while (validado != 1){
+//cargarMarca(&coche);
+//validado = limiteMarca(coche.marca);
+//i++;
 
-//mostrarAutosNuevos();
-
-menuCargaPersonas();
-autoMenu();
-
+Patente patente;
+cargarPatente(&patente);
 
 
 

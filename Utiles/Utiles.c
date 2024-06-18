@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <limits.h>
 
 #include "Utiles.h"
 #include "../Persona/Persona.h"
@@ -26,13 +29,24 @@ int existeArchivo(char *nombreArchivo){
     return valor;
 }
 
-/****/
+/**
+    Funcion que crea un archivo
+    Params: char *nombreArchivo -> puntero a char, que representa la cadena del nombre del archivo
+    Return : none
+**/
 
 
 void crearArchivo(char *nombreArchivo){
     FILE *archivo = fopen(nombreArchivo, "wb");
     fclose(archivo);
 }
+
+/**
+    Funcion que muestra el contenido del archivo de Personas
+    params: char *nombreArchivo -> el nombre del archivo
+    Return: none
+
+**/
 
 void verArchivoPersonas(char *nombreArchivo){
 FILE *archivo = fopen(nombreArchivo, "rb");
@@ -59,3 +73,17 @@ printf("problemas para abrir el archivo");
 fclose(archivo);
 
 }
+
+/**
+    Funcion que cuenta los digitos de un numero entero
+    Params: int numero -> el numero a evaluar
+    Return: int -> un entero que representa la cantidad de digitos que tiene el entero recibido por parametro
+
+**/
+
+int contarDigitos(int numero){
+    int contador = (log10(numero) + 1);
+    return contador;
+
+}
+

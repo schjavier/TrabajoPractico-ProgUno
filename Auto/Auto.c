@@ -150,26 +150,34 @@ void cargarTitular(Auto *coche){
 **/
 
 
+
 void cargarKms(Auto *coche){
 
-    int kms;
+    char kms[8];
     int evaluacion;
+    int limite;
+    int noNegativo;
+
 
     printf("Ingrese el kilometraje: ");
     fflush(stdin);
-    scanf("%d", &kms);
-    evaluacion = kmsNoNegativo(kms);
+    gets(kms);
 
-    while (evaluacion == 0){
-        printf("Los kilometrajes no pueden ser menores a 0\n");
+    limite = limiteKms(kms);
+    evaluacion = kmsNumerico(kms);
+    noNegativo = kmsNoNegativo(kms);
+    while (evaluacion == 0 || limite == 0 || noNegativo == 0){
         printf("Vuelva a Intentarlo.\n");
         printf("Ingrese el kilometraje: ");
         fflush(stdin);
-        scanf("%d", &kms);
-        evaluacion = kmsNoNegativo(kms);
+        gets(kms);
+        limite = limiteKms(kms);
+        evaluacion = kmsNumerico(kms);
+
+
     }
 
-    coche->kms = kms;
+    strcpy(coche->kms, kms);
 
 }
 
@@ -236,7 +244,7 @@ void mostrarAuto(Auto coche){
     printf(":: MARCA: %s::\n", coche.marca);
     printf(":: MODELO: %s::\n", coche.modelo);
     printf(":: A%cO: %d::\n", 165, coche.anio);
-    printf(":: KILOMETRAJE: %d kms::\n", coche.kms);
+    printf(":: KILOMETRAJE: %s kms::\n", coche.kms);
     printf(":: NOMBRE DEL TITULAR: %s::\n", coche.titular.nombre);
     printf(":: PRECIO DE ADQUISICION: %.2f::\n", coche.precioDeAdquisicion);
 
@@ -432,7 +440,7 @@ Auto convertirAuto(AutoArchivo coche){
     strcpy (aux.marca, coche.marca);
     strcpy (aux.modelo, coche.modelo);
     aux.anio = coche.anio;
-    aux.kms = coche.kms;
+    strcpy (aux.kms, coche.kms);
     aux.titular = buscarTitular(coche.dniTitular);
     aux.precioDeAdquisicion = coche.precioDeAdquisicion;
 
